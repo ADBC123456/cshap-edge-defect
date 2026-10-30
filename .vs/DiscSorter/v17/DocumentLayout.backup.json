@@ -1,0 +1,392 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\woker\\cshap-edge-defect\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\viewmodels\\warehouseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\viewmodels\\warehouseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\helpers\\windowscreenshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\helpers\\windowscreenshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\helpers\\startupoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\helpers\\startupoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A005E9E-A933-4882-85CA-6392B6BCB6EA}|src\\DiscSorter.Core\\DiscSorter.Core.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.core\\discsorter.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3A005E9E-A933-4882-85CA-6392B6BCB6EA}|src\\DiscSorter.Core\\DiscSorter.Core.csproj|solutionrelative:src\\discsorter.core\\discsorter.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7C0D15E-A4E8-499A-B62D-9C3ADEDBB464}|tests\\DiscSorter.Tests\\DiscSorter.Tests.csproj|e:\\woker\\cshap-edge-defect\\tests\\discsorter.tests\\discsorter.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E7C0D15E-A4E8-499A-B62D-9C3ADEDBB464}|tests\\DiscSorter.Tests\\DiscSorter.Tests.csproj|solutionrelative:tests\\discsorter.tests\\discsorter.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\views\\visionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\views\\visionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\views\\warehouseview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\views\\warehouseview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\views\\monitorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\views\\monitorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\views\\settingsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\views\\settingsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\viewmodels\\slotviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\viewmodels\\slotviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\viewmodels\\parameteritemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\viewmodels\\parameteritemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\controls\\slotcard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\controls\\slotcard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\controls\\slotcell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\controls\\slotcell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|e:\\woker\\cshap-edge-defect\\src\\discsorter.app\\discsorter.app.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3610D9FA-C2E6-4CD5-8571-88265BDA9A7A}|src\\DiscSorter.App\\DiscSorter.App.csproj|solutionrelative:src\\discsorter.app\\discsorter.app.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Light.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Dark.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Converters\\Converters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "DiscSorter.App.csproj",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\DiscSorter.App.csproj",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\DiscSorter.App.csproj",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\DiscSorter.App.csproj",
+              "RelativeToolTip": "src\\DiscSorter.App\\DiscSorter.App.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-27T11:14:33.556Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvw4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:18:38.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WarehouseViewModel.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\WarehouseViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\ViewModels\\WarehouseViewModel.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\WarehouseViewModel.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\ViewModels\\WarehouseViewModel.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:18:31.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WindowScreenshot.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Helpers\\WindowScreenshot.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Helpers\\WindowScreenshot.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Helpers\\WindowScreenshot.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\Helpers\\WindowScreenshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:18:23.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StartupOptions.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Helpers\\StartupOptions.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Helpers\\StartupOptions.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Helpers\\StartupOptions.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\Helpers\\StartupOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:18:22.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Styles.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Styles\\Styles.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Styles\\Styles.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Styles\\Styles.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Styles\\Styles.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:18:20.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DiscSorter.Core.csproj",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.Core\\DiscSorter.Core.csproj",
+              "RelativeDocumentMoniker": "src\\DiscSorter.Core\\DiscSorter.Core.csproj",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.Core\\DiscSorter.Core.csproj",
+              "RelativeToolTip": "src\\DiscSorter.Core\\DiscSorter.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-28T11:18:15.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DiscSorter.Tests.csproj",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\tests\\DiscSorter.Tests\\DiscSorter.Tests.csproj",
+              "RelativeDocumentMoniker": "tests\\DiscSorter.Tests\\DiscSorter.Tests.csproj",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\tests\\DiscSorter.Tests\\DiscSorter.Tests.csproj",
+              "RelativeToolTip": "tests\\DiscSorter.Tests\\DiscSorter.Tests.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-28T11:18:13.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "VisionView.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\VisionView.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Views\\VisionView.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\VisionView.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Views\\VisionView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:17:25.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WarehouseView.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\WarehouseView.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Views\\WarehouseView.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\WarehouseView.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Views\\WarehouseView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:17:23.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MonitorView.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\MonitorView.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Views\\MonitorView.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\MonitorView.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Views\\MonitorView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:17:20.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SettingsView.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\SettingsView.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Views\\SettingsView.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Views\\SettingsView.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Views\\SettingsView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:17:16.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SlotViewModel.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\SlotViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\ViewModels\\SlotViewModel.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\SlotViewModel.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\ViewModels\\SlotViewModel.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwGsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:14:50.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\MainWindow.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\MainWindow.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:12:28.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SettingsViewModel.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\SettingsViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\ViewModels\\SettingsViewModel.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\SettingsViewModel.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\ViewModels\\SettingsViewModel.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:14:51.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ParameterItemViewModel.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\ParameterItemViewModel.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\ViewModels\\ParameterItemViewModel.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\ViewModels\\ParameterItemViewModel.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\ViewModels\\ParameterItemViewModel.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:14:36.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SlotCard.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Controls\\SlotCard.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Controls\\SlotCard.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Controls\\SlotCard.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Controls\\SlotCard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:14:12.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SlotCell.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Controls\\SlotCell.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\Controls\\SlotCell.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\Controls\\SlotCell.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\Controls\\SlotCell.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-28T11:14:09.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\MainWindow.xaml.cs",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\MainWindow.xaml.cs",
+              "RelativeToolTip": "src\\DiscSorter.App\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-28T11:13:13.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\App.xaml",
+              "RelativeDocumentMoniker": "src\\DiscSorter.App\\App.xaml",
+              "ToolTip": "E:\\woker\\cshap-edge-defect\\src\\DiscSorter.App\\App.xaml",
+              "RelativeToolTip": "src\\DiscSorter.App\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-27T11:38:42.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Light.xaml",
+              "DocumentMoniker": "E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Light.xaml",
+              "RelativeDocumentMoniker": "..\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Light.xaml",
+              "ToolTip": "E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Light.xaml",
+              "RelativeToolTip": "..\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Light.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-27T11:38:34.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Dark.xaml",
+              "DocumentMoniker": "E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Dark.xaml",
+              "RelativeDocumentMoniker": "..\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Dark.xaml",
+              "ToolTip": "E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Dark.xaml",
+              "RelativeToolTip": "..\\c#edge-defect\\src\\DiscSorter.App\\Themes\\Dark.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-27T11:38:33.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Converters.cs",
+              "DocumentMoniker": "E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Converters\\Converters.cs",
+              "RelativeDocumentMoniker": "..\\c#edge-defect\\src\\DiscSorter.App\\Converters\\Converters.cs",
+              "ToolTip": "E:\\woker\\c#edge-defect\\src\\DiscSorter.App\\Converters\\Converters.cs",
+              "RelativeToolTip": "..\\c#edge-defect\\src\\DiscSorter.App\\Converters\\Converters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T11:38:30.499Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

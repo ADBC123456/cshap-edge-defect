@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="23.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>* ==================== 圆片缺陷识别：批量回归 ====================</c>
+<c>* 上位机只调用下面的 dd_* 过程，不执行 main。</c>
+<c>* main 用来离线批量测试：遍历文件夹里的图片，逐张调用 dd_detect，</c>
+<c>* 把结果写进 output/halcon_文件夹名.csv（与 tools/compare.py 的格式一致），</c>
+<c>* 并把每张图的标注效果图存进 output/halcon_文件夹名/。</c>
+<c>* 用法：在 HDevelop 里按 F5 运行；或命令行 hrun -b halcon/DiscDefect.hdev</c>
+<c></c>
+<c>* 工程根目录（路径里的 # 没有问题）</c>
+<l>ProjectDir := 'E:/woker/cshap-edge-defect'</l>
+<c>* 要测试的图片文件夹（data 下的子文件夹名），可以写多个，例如 ['station', 'samples']</c>
+<l>SetNames := ['station']</l>
+<c>* 图像变换：'none' 是原图。稳健性测试时改成</c>
+<c>* ['none', 'rot90', 'rot180', 'rot30', 'mirror', 'scale0.8', 'dark0.85', 'noise']</c>
+<l>AugList := ['none']</l>
+<c></c>
+<c>* 固定随机数种子，让"加噪声"变换每次运行结果一样</c>
+<l>set_system ('seed_rand', 42)</l>
+<l>dd_default_params (Params)</l>
+<c>* 每个文件夹的正确数，运行完在变量窗口里看 Summary</c>
+<l>Summary := []</l>
+<l>for SetIndex := 0 to |SetNames| - 1 by 1</l>
+<l>    SetName := SetNames[SetIndex]</l>
+<l>    ImageDir := ProjectDir + '/data/' + SetName</l>
+<l>    OutDir := ProjectDir + '/output/halcon_' + SetName</l>
+<l>    if (|AugList| &gt; 1)</l>
+<l>        OutDir := OutDir + '_robust'</l>
+<l>    endif</l>
+<l>    file_exists (OutDir, DirExists)</l>
+<l>    if (not DirExists)</l>
+<l>        make_dir (OutDir)</l>
+<l>    endif</l>
+<c>    * 列出图片文件，按文件名排序</c>
+<l>    list_files (ImageDir, 'files', AllFiles)</l>
+<l>    tuple_regexp_select (AllFiles, ['\\.(png|jpg|jpeg|bmp|tif|tiff)$', 'ignore_case'], ImageFiles)</l>
+<l>    tuple_sort (ImageFiles, ImageFiles)</l>
+<c>    * 两个 CSV：每张图一行的结果表、每个候选一行的特征表</c>
+<l>    open_file (OutDir + '.csv', 'output', ResultFile)</l>
+<l>    fwrite_string (ResultFile, 'file,expected,predicted,all_types,circle_found,row,col,radius,time_ms\n')</l>
+<l>    open_file (OutDir + '_features.csv', 'output', FeatureFile)</l>
+<l>    fwrite_string (FeatureFile, 'file,index,type,is_main,area,contrast,edge_gap,pocket_area,hole_ratio,thickness,length,score\n')</l>
+<l>    Correct := 0</l>
+<l>    Total := 0</l>
+<l>    for FileIndex := 0 to |ImageFiles| - 1 by 1</l>
+<l>        read_image (OriginalImage, ImageFiles[FileIndex])</l>
+<c>        * FileName 带扩展名（例如 Q_1.png），BaseName 不带（例如 Q_1）</c>
+<l>        tuple_regexp_match (ImageFiles[FileIndex], '([^/\\\\]+)$', FileName)</l>
+<l>        tuple_regexp_match (FileName, '^(.+)\\.[A-Za-z]+$', BaseName)</l>
+<c>        * 文件名前缀就是真实类别，例如 Q_1.png 的真实类别是 Q</c>
+<l>        tuple_regexp_match (BaseName, '^(Q|H|K|W|NONE)_', Expected)</l>
+<l>        for AugIndex := 0 to |AugList| - 1 by 1</l>
+<l>            Augment := AugList[AugIndex]</l>
+<l>            augment_image (OriginalImage, Image, Augment)</l>
+<l>            Name := FileName</l>
+<l>            ImageName := BaseName</l>
+<l>            if (Augment != 'none')</l>
+<l>                Name := FileName + '@' + Augment</l>
+<l>                ImageName := BaseName + '@' + Augment</l>
+<l>            endif</l>
+<c>            * 识别并计时</c>
+<l>            count_seconds (StartTime)</l>
+<l>            dd_detect (Image, Disk, RawRegion, Candidates, Defects, Params, Found, Row, Column, Radius, Category, Result)</l>
+<l>            count_seconds (EndTime)</l>
+<l>            TimeMs := (EndTime - StartTime) * 1000.0</l>
+<c>            * 写结果表</c>
+<l>            get_dict_tuple (Result, 'type', Types)</l>
+<l>            AllTypes := ''</l>
+<l>            for TypeIndex := 0 to |Types| - 1 by 1</l>
+<l>                if (TypeIndex &gt; 0)</l>
+<l>                    AllTypes := AllTypes + '+'</l>
+<l>                endif</l>
+<l>                AllTypes := AllTypes + Types[TypeIndex]</l>
+<l>            endfor</l>
+<l>            fwrite_string (ResultFile, Name + ',' + Expected + ',' + Category + ',' + AllTypes + ',' + Found + ',' + Row$'.2f' + ',' + Column$'.2f' + ',' + Radius$'.2f' + ',' + TimeMs$'.1f' + '\n')</l>
+<l>            Total := Total + 1</l>
+<l>            if (Category == Expected)</l>
+<l>                Correct := Correct + 1</l>
+<l>            endif</l>
+<c>            * 写特征表</c>
+<l>            write_feature_rows (FeatureFile, Name, Result)</l>
+<c>            * 画效果图并保存</c>
+<l>            draw_result (Image, Disk, Candidates, Defects, OutDir + '/' + ImageName, Category, Expected, Result)</l>
+<l>        endfor</l>
+<l>    endfor</l>
+<l>    close_file (ResultFile)</l>
+<l>    close_file (FeatureFile)</l>
+<l>    Summary := [Summary, SetName + ': ' + Correct + '/' + Total]</l>
+<l>endfor</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+<procedure name="dd_default_params">
+<interface>
+<oc>
+<par name="Params" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 生成默认参数字典。上位机先调这个过程，再用 halcon/detector.json 里保存的值覆盖同名参数。</c>
+<c>* 带 _ratio 的几何参数都是"乘以圆半径 R"的比例，换相机、分辨率变了也不用重调。</c>
+<l>create_dict (Params)</l>
+<c>* ---- 找圆 ----</c>
+<c>* 圆半径的搜索范围 = 比例 × 图像短边</c>
+<l>set_dict_tuple (Params, 'radius_min_ratio', 0.2)</l>
+<l>set_dict_tuple (Params, 'radius_max_ratio', 0.5)</l>
+<c>* 粗定位提取边缘的灰度梯度阈值（Canny 高阈值，低阈值取它的一半）</c>
+<l>set_dict_tuple (Params, 'edge_amplitude', 40)</l>
+<c>* metrology 测圆的最低得分（整圈测量线中测到边缘的比例），低于它就算没找到圆</c>
+<l>set_dict_tuple (Params, 'circle_min_score', 0.4)</l>
+<c>* 精定位：沿半径方向搜索边缘的半长（像素）和最小灰度跳变</c>
+<l>set_dict_tuple (Params, 'metrology_measure_length', 20)</l>
+<l>set_dict_tuple (Params, 'metrology_threshold', 20)</l>
+<c>* ---- 分割 ----</c>
+<c>* 检测区域 = 圆向内收缩 比例 × R，避开圆片边缘</c>
+<l>set_dict_tuple (Params, 'rim_margin_ratio', 0.04)</l>
+<c>* 高斯平滑的 sigma，压掉纸面上的细小噪点</c>
+<l>set_dict_tuple (Params, 'smooth_sigma', 1.5)</l>
+<c>* 求局部背景的均值滤波窗口 = 比例 × R</c>
+<l>set_dict_tuple (Params, 'background_kernel_ratio', 0.5)</l>
+<c>* 暗度的算法：'absolute' 比背景暗多少灰度（光照均匀时用）；'relative' 比背景暗百分之几（有重阴影时用）</c>
+<l>set_dict_tuple (Params, 'darkness_mode', 'absolute')</l>
+<c>* relative 模式用的三个阈值（百分比）：种子、相连、最小缺陷对比度</c>
+<l>set_dict_tuple (Params, 'relative_offset', 40)</l>
+<l>set_dict_tuple (Params, 'relative_low', 25)</l>
+<l>set_dict_tuple (Params, 'relative_min_contrast', 25)</l>
+<c>* 比局部背景暗多少灰度才算墨迹：高阈值（种子）和低阈值（与种子相连才保留）</c>
+<l>set_dict_tuple (Params, 'dyn_threshold_offset', 50)</l>
+<l>set_dict_tuple (Params, 'dyn_threshold_low', 40)</l>
+<c>* 闭运算半径，把断开的笔画接起来</c>
+<l>set_dict_tuple (Params, 'closing_radius', 3.5)</l>
+<c>* 面积小于它的候选直接丢掉（像素）</c>
+<l>set_dict_tuple (Params, 'min_component_area', 60)</l>
+<c>* ---- 分类 ----</c>
+<c>* 对比度低于它的候选不算缺陷（墨迹对比度都在 90 以上，阴影里的污点和噪点一般在 60 以下）</c>
+<l>set_dict_tuple (Params, 'min_defect_contrast', 60)</l>
+<c>* Q：离圆边的距离 ≤ 比例 × R 算"碰边"；切下的角面积 ≥ 比例 × 圆面积</c>
+<l>set_dict_tuple (Params, 'q_contact_ratio', 0.08)</l>
+<l>set_dict_tuple (Params, 'q_min_pocket_ratio', 0.003)</l>
+<c>* K：孔面积占（区域 + 孔）的比例</c>
+<l>set_dict_tuple (Params, 'k_min_hole_ratio', 0.3)</l>
+<c>* W：最大内切圆半径 ≥ 比例 × R 算"实心厚块"</c>
+<l>set_dict_tuple (Params, 'w_min_thickness_ratio', 0.05)</l>
+<c>* H：骨架长度 ≥ 比例 × R 算"细长线条"</c>
+<l>set_dict_tuple (Params, 'h_min_length_ratio', 0.1)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_default_params">
+<parameters>
+<parameter id="Params"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_to_gray">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Gray" base_type="iconic" dimension="0"/>
+</oo>
+</interface>
+<body>
+<c>* 彩色图转灰度：取 R、G、B 三个通道中的最大值（等于 HSV 颜色空间的 V 通道）。</c>
+<c>* 原因：工位图右侧的阴影偏蓝紫色，B 通道仍然很亮，取最大值后阴影变浅；</c>
+<c>* 而黑色墨迹三个通道都暗，取最大值后仍然是暗的。</c>
+<l>count_channels (Image, Channels)</l>
+<l>if (Channels &gt;= 3)</l>
+<l>    access_channel (Image, Red, 1)</l>
+<l>    access_channel (Image, Green, 2)</l>
+<l>    access_channel (Image, Blue, 3)</l>
+<l>    max_image (Red, Green, RedGreen)</l>
+<l>    max_image (RedGreen, Blue, Gray)</l>
+<l>else</l>
+<l>    access_channel (Image, Gray, 1)</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="dd_to_gray">
+<parameters>
+<parameter id="Gray"/>
+<parameter id="Image"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_locate_disk">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Disk" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Found" base_type="ctrl" dimension="0"/>
+<par name="Row" base_type="ctrl" dimension="0"/>
+<par name="Column" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 找圆片，分两步：</c>
+<c>*   1 粗定位：从边缘里找出圆弧，每段圆弧拟合出一个"候选圆"；</c>
+<c>*   2 精定位：用 metrology（亚像素测量）逐个检验候选圆，得分最高的就是圆片表面的边缘。</c>
+<c>* 输出：Disk 圆形区域；Found = 1 找到 / 0 没找到；圆心 Row、Column 和半径 Radius（像素）。</c>
+<l>get_dict_tuple (Params, 'radius_min_ratio', RadiusMinRatio)</l>
+<l>get_dict_tuple (Params, 'radius_max_ratio', RadiusMaxRatio)</l>
+<l>get_dict_tuple (Params, 'edge_amplitude', EdgeAmplitude)</l>
+<l>get_dict_tuple (Params, 'circle_min_score', MinScore)</l>
+<l>get_dict_tuple (Params, 'metrology_measure_length', MeasureLength)</l>
+<l>get_dict_tuple (Params, 'metrology_threshold', MeasureThreshold)</l>
+<l>Found := 0</l>
+<l>Row := 0</l>
+<l>Column := 0</l>
+<l>Radius := 0</l>
+<l>gen_empty_region (Disk)</l>
+<l>dd_to_gray (Image, Gray)</l>
+<l>get_image_size (Gray, Width, Height)</l>
+<l>RadiusMin := RadiusMinRatio * min([Width, Height])</l>
+<l>RadiusMax := RadiusMaxRatio * min([Width, Height])</l>
+<c></c>
+<c>* ---- 第 1 步：粗定位，得到若干候选圆 ----</c>
+<c>* 1.1 提取亚像素边缘（Canny 滤波，高阈值 EdgeAmplitude，低阈值取一半）</c>
+<l>edges_sub_pix (Gray, Edges, 'canny', 2, EdgeAmplitude / 2, EdgeAmplitude)</l>
+<c>* 1.2 把边缘切成直线段和圆弧段，只看长度 40 像素以上的段</c>
+<l>segment_contours_xld (Edges, Segments, 'lines_circles', 5, 4, 2)</l>
+<l>select_contours_xld (Segments, LongSegments, 'contour_length', 40, 1000000, -0.5, 0.5)</l>
+<l>count_obj (LongSegments, SegmentCount)</l>
+<c>* 1.3 每段圆弧拟合一个圆，半径在搜索范围内的作为候选圆</c>
+<l>CandidateRows := []</l>
+<l>CandidateColumns := []</l>
+<l>CandidateRadii := []</l>
+<l>for Index := 1 to SegmentCount by 1</l>
+<l>    select_obj (LongSegments, Segment, Index)</l>
+<c>    * cont_approx：-1 直线段，0 椭圆弧，1 圆弧</c>
+<l>    get_contour_global_attrib_xld (Segment, 'cont_approx', Approx)</l>
+<l>    if (Approx == 1)</l>
+<l>        fit_circle_contour_xld (Segment, 'algebraic', -1, 0, 0, 3, 2, ArcRow, ArcColumn, ArcRadius, StartPhi, EndPhi, PointOrder)</l>
+<l>        if (ArcRadius &gt;= RadiusMin and ArcRadius &lt;= RadiusMax)</l>
+<l>            CandidateRows := [CandidateRows, ArcRow]</l>
+<l>            CandidateColumns := [CandidateColumns, ArcColumn]</l>
+<l>            CandidateRadii := [CandidateRadii, ArcRadius]</l>
+<l>        endif</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>if (|CandidateRadii| == 0)</l>
+<l>    return ()</l>
+<l>endif</l>
+<c></c>
+<c>* ---- 第 2 步：精定位，用 metrology 检验每个候选圆 ----</c>
+<c>* 每个候选圆沿圆周均匀放 180 条测量线（方向由圆心向外），每条线上找第一个"由亮变暗"的边缘，</c>
+<c>* 也就是圆片表面到外圈暗边的分界；再用 RANSAC 拟合成圆，墨迹、阴影造成的个别错点会被剔除。</c>
+<c>* 得分 = 参与拟合的测量点占测量线的比例。真正的圆片边缘几乎整圈都能测到，得分最高。</c>
+<l>create_metrology_model (MetrologyHandle)</l>
+<l>set_metrology_model_image_size (MetrologyHandle, Width, Height)</l>
+<l>for Index := 0 to |CandidateRadii| - 1 by 1</l>
+<l>    add_metrology_object_circle_measure (MetrologyHandle, CandidateRows[Index], CandidateColumns[Index], CandidateRadii[Index], MeasureLength, 4, 1.5, MeasureThreshold, ['measure_transition', 'measure_select', 'num_measures', 'min_score'], ['negative', 'first', 180, 0.3], MetrologyIndex)</l>
+<l>endfor</l>
+<l>apply_metrology_model (Gray, MetrologyHandle)</l>
+<l>BestScore := 0</l>
+<l>for Index := 0 to |CandidateRadii| - 1 by 1</l>
+<l>    get_metrology_object_result (MetrologyHandle, Index, 'all', 'result_type', 'all_param', CircleParam)</l>
+<l>    get_metrology_object_result (MetrologyHandle, Index, 'all', 'result_type', 'score', Score)</l>
+<l>    if (|CircleParam| == 3)</l>
+<l>        if (Score &gt; BestScore and CircleParam[2] &gt;= RadiusMin and CircleParam[2] &lt;= RadiusMax)</l>
+<l>            BestScore := Score</l>
+<l>            Row := CircleParam[0]</l>
+<l>            Column := CircleParam[1]</l>
+<l>            Radius := CircleParam[2]</l>
+<l>        endif</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>clear_metrology_model (MetrologyHandle)</l>
+<l>if (BestScore &lt; MinScore)</l>
+<c>    * 没有一个候选圆能整圈测到边缘：判为没找到</c>
+<l>    Row := 0</l>
+<l>    Column := 0</l>
+<l>    Radius := 0</l>
+<l>    return ()</l>
+<l>endif</l>
+<l>gen_circle (Disk, Row, Column, Radius)</l>
+<l>Found := 1</l>
+<l>return ()</l>
+</body>
+<docu id="dd_locate_disk">
+<parameters>
+<parameter id="Column"/>
+<parameter id="Disk"/>
+<parameter id="Found"/>
+<parameter id="Image"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="Row"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_make_roi">
+<interface>
+<io>
+<par name="Disk" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Roi" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<c>* 检测区域：圆向内收缩一圈，避开圆片边缘的暗边。</c>
+<l>get_dict_tuple (Params, 'rim_margin_ratio', RimMarginRatio)</l>
+<l>Margin := max([1.5, RimMarginRatio * Radius])</l>
+<l>erosion_circle (Disk, Roi, Margin)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_make_roi">
+<parameters>
+<parameter id="Disk"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="Roi"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_segment">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+<par name="Disk" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="RawRegion" base_type="iconic" dimension="0"/>
+<par name="Candidates" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<c>* 分割墨迹：在检测区域里找"比周围背景暗很多"的像素（动态阈值），再整理成一个个候选区域。</c>
+<l>get_dict_tuple (Params, 'smooth_sigma', SmoothSigma)</l>
+<l>get_dict_tuple (Params, 'background_kernel_ratio', KernelRatio)</l>
+<l>get_dict_tuple (Params, 'dyn_threshold_offset', Offset)</l>
+<l>get_dict_tuple (Params, 'dyn_threshold_low', OffsetLow)</l>
+<l>get_dict_tuple (Params, 'closing_radius', ClosingRadius)</l>
+<l>get_dict_tuple (Params, 'min_component_area', MinArea)</l>
+<l>gen_empty_region (RawRegion)</l>
+<l>gen_empty_obj (Candidates)</l>
+<l>area_center (Disk, DiskArea, DiskRow, DiskColumn)</l>
+<l>if (DiskArea == 0)</l>
+<l>    return ()</l>
+<l>endif</l>
+<c>* 1 检测区域（圆向内收缩）</c>
+<l>dd_make_roi (Disk, Roi, Params, Radius)</l>
+<c>* 2 转灰度并平滑，压掉纸面噪点</c>
+<l>dd_to_gray (Image, Gray)</l>
+<l>smooth_image (Gray, Smoothed, 'gauss', SmoothSigma)</l>
+<c>* 3 局部背景 = 大窗口均值滤波。窗口要比最大的污渍还宽，否则污渍中间会漏检</c>
+<l>KernelSize := int(KernelRatio * Radius)</l>
+<l>if (KernelSize % 2 == 0)</l>
+<l>    KernelSize := KernelSize + 1</l>
+<l>endif</l>
+<l>KernelSize := min([max([KernelSize, 3]), 501])</l>
+<l>mean_image (Smoothed, Background, KernelSize, KernelSize)</l>
+<c>* 4 动态阈值（双阈值）：先算每个像素比局部背景暗多少（Darkness），</c>
+<c>*   暗 Offset 以上的像素肯定是墨迹（种子）；暗 OffsetLow 以上、并且和种子连在一起的像素也算墨迹。</c>
+<c>*   这样细线上偏淡的地方（例如穿过阴影边界处）不会断开，而孤立的淡噪点不会被选上。</c>
+<l>reduce_domain (Smoothed, Roi, SmoothedRoi)</l>
+<l>get_dict_tuple (Params, 'darkness_mode', DarknessMode)</l>
+<l>if (DarknessMode == 'relative')</l>
+<c>    * 按比例：暗度 = (1 - 像素 / 背景) × 100，即"比背景暗了百分之几"。</c>
+<c>    * 阴影相当于光照打了折扣，按比例算可以抵消，阴影里的墨迹和亮区的墨迹得到相近的暗度</c>
+<l>    div_image (SmoothedRoi, Background, Percent, 100, 0)</l>
+<l>    scale_image (Percent, Darkness, -1, 100)</l>
+<l>    get_dict_tuple (Params, 'relative_offset', Offset)</l>
+<l>    get_dict_tuple (Params, 'relative_low', OffsetLow)</l>
+<l>else</l>
+<l>    sub_image (Background, SmoothedRoi, Darkness, 1, 0)</l>
+<l>endif</l>
+<l>hysteresis_threshold (Darkness, RawRegion, OffsetLow, Offset, 50)</l>
+<c>* 5 闭运算接断线，再拆成连通域，去掉太小的噪点</c>
+<l>closing_circle (RawRegion, Closed, ClosingRadius)</l>
+<l>intersection (Closed, Roi, ClosedInRoi)</l>
+<l>connection (ClosedInRoi, Connected)</l>
+<l>select_shape (Connected, Candidates, 'area', 'and', MinArea, 1000000000)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_segment">
+<parameters>
+<parameter id="Candidates"/>
+<parameter id="Disk"/>
+<parameter id="Image"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="RawRegion"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_region_features">
+<interface>
+<io>
+<par name="Region" base_type="iconic" dimension="0"/>
+<par name="Roi" base_type="iconic" dimension="0"/>
+<par name="Gray" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+<par name="DiskRow" base_type="ctrl" dimension="0"/>
+<par name="DiskColumn" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Area" base_type="ctrl" dimension="0"/>
+<par name="Contrast" base_type="ctrl" dimension="0"/>
+<par name="EdgeGap" base_type="ctrl" dimension="0"/>
+<par name="PocketArea" base_type="ctrl" dimension="0"/>
+<par name="HoleRatio" base_type="ctrl" dimension="0"/>
+<par name="Thickness" base_type="ctrl" dimension="0"/>
+<par name="Length" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 计算一个候选区域的形状特征，分类就靠这几个数。</c>
+<c>* 面积（像素）</c>
+<l>area_center (Region, Area, CenterRow, CenterColumn)</l>
+<c>* 对比度 = 周围一圈背景的平均灰度 − 区域自身的平均灰度，越大越"黑"</c>
+<l>intensity (Region, Gray, InsideMean, InsideDeviation)</l>
+<l>dilation_circle (Region, Dilated, 5.5)</l>
+<l>difference (Dilated, Region, Around)</l>
+<l>intersection (Around, Roi, AroundInRoi)</l>
+<l>area_center (AroundInRoi, AroundArea, Dummy1, Dummy2)</l>
+<l>if (AroundArea &gt; 0)</l>
+<l>    intensity (AroundInRoi, Gray, AroundMean, AroundDeviation)</l>
+<l>    Contrast := AroundMean - InsideMean</l>
+<l>    get_dict_tuple (Params, 'darkness_mode', ContrastMode)</l>
+<c>    * relative 模式：对比度也按比例算（暗了百分之几）</c>
+<l>    if (ContrastMode == 'relative')</l>
+<l>        Contrast := 100.0 * (AroundMean - InsideMean) / max([AroundMean, 1])</l>
+<l>    endif</l>
+<l>else</l>
+<l>    Contrast := 0</l>
+<l>endif</l>
+<c>* 离圆边的距离 = 半径 − 区域上离圆心最远的点到圆心的距离</c>
+<l>distance_pr (Region, DiskRow, DiskColumn, DistanceMin, DistanceMax)</l>
+<l>EdgeGap := Radius - DistanceMax</l>
+<c>* 切下的角：取一个比圆片小"碰边容差"的测试圆，减去这个区域后，测试圆会断成几块。</c>
+<c>* 最大的一块是圆片主体；其余碰到测试圆外边的块，就是被线条和圆边围起来的"角"。</c>
+<c>* （闭合轮廓中间的块碰不到外边，所以不算角；线条末端离圆边差几个像素也能封住角）</c>
+<l>get_dict_tuple (Params, 'q_contact_ratio', QContactRatio)</l>
+<l>TestRadius := Radius - QContactRatio * Radius</l>
+<l>gen_circle (TestCircle, DiskRow, DiskColumn, TestRadius)</l>
+<l>dilation_circle (Region, Wall, 1.5)</l>
+<l>difference (TestCircle, Wall, Rest)</l>
+<l>connection (Rest, Pieces)</l>
+<l>area_center (Pieces, PieceAreas, PieceRows, PieceColumns)</l>
+<l>PocketArea := 0</l>
+<l>if (|PieceAreas| &gt;= 2)</l>
+<l>    tuple_max (PieceAreas, BodyArea)</l>
+<l>    for Index := 0 to |PieceAreas| - 1 by 1</l>
+<l>        select_obj (Pieces, Piece, Index + 1)</l>
+<l>        distance_pr (Piece, DiskRow, DiskColumn, PieceMin, PieceMax)</l>
+<l>        if (PieceAreas[Index] &lt; BodyArea and PieceMax &gt;= TestRadius - 2)</l>
+<l>            PocketArea := PocketArea + PieceAreas[Index]</l>
+<l>        endif</l>
+<l>    endfor</l>
+<l>endif</l>
+<c>* 孔的比例 = 孔面积 / (区域面积 + 孔面积)，闭合空心轮廓接近 1，实心块和开放线条接近 0</c>
+<l>area_holes (Region, HoleArea)</l>
+<l>HoleRatio := real(HoleArea) / max([Area + HoleArea, 1])</l>
+<c>* 厚度 = 最大内切圆半径，线条只有 1~2 像素，实心块有十几像素</c>
+<l>inner_circle (Region, InnerRow, InnerColumn, Thickness)</l>
+<c>* 长度 = 骨架（区域细化成单像素宽的线）的像素数</c>
+<l>skeleton (Region, Skeleton)</l>
+<l>area_center (Skeleton, Length, Dummy1, Dummy2)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_region_features">
+<parameters>
+<parameter id="Area"/>
+<parameter id="Contrast"/>
+<parameter id="DiskColumn"/>
+<parameter id="DiskRow"/>
+<parameter id="EdgeGap"/>
+<parameter id="Gray"/>
+<parameter id="HoleRatio"/>
+<parameter id="Length"/>
+<parameter id="Params"/>
+<parameter id="PocketArea"/>
+<parameter id="Radius"/>
+<parameter id="Region"/>
+<parameter id="Roi"/>
+<parameter id="Thickness"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_classify_region">
+<interface>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+<par name="Contrast" base_type="ctrl" dimension="0"/>
+<par name="EdgeGap" base_type="ctrl" dimension="0"/>
+<par name="PocketArea" base_type="ctrl" dimension="0"/>
+<par name="HoleRatio" base_type="ctrl" dimension="0"/>
+<par name="Thickness" base_type="ctrl" dimension="0"/>
+<par name="Length" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Type" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 按顺序判断，先满足的先定：对比度不够 → Q → K → W → H；都不满足返回空字符串（不算缺陷）。</c>
+<l>get_dict_tuple (Params, 'min_defect_contrast', MinContrast)</l>
+<l>get_dict_tuple (Params, 'darkness_mode', DarknessMode)</l>
+<l>if (DarknessMode == 'relative')</l>
+<c>    * relative 模式下对比度是百分比，用对应的阈值</c>
+<l>    get_dict_tuple (Params, 'relative_min_contrast', MinContrast)</l>
+<l>endif</l>
+<l>get_dict_tuple (Params, 'q_contact_ratio', QContactRatio)</l>
+<l>get_dict_tuple (Params, 'q_min_pocket_ratio', QMinPocketRatio)</l>
+<l>get_dict_tuple (Params, 'k_min_hole_ratio', KMinHoleRatio)</l>
+<l>get_dict_tuple (Params, 'w_min_thickness_ratio', WMinThicknessRatio)</l>
+<l>get_dict_tuple (Params, 'h_min_length_ratio', HMinLengthRatio)</l>
+<l>DiskArea := 3.14159 * Radius * Radius</l>
+<l>if (Contrast &lt; MinContrast)</l>
+<c>    * 不够黑：是阴影里的污点或噪点，不是墨迹</c>
+<l>    Type := ''</l>
+<l>elseif (EdgeGap &lt;= QContactRatio * Radius and PocketArea &gt;= QMinPocketRatio * DiskArea)</l>
+<c>    * Q 缺角：线条碰到圆边，并和圆边围出一个角</c>
+<l>    Type := 'Q'</l>
+<l>elseif (HoleRatio &gt;= KMinHoleRatio)</l>
+<c>    * K 孔洞：闭合的空心轮廓，中间有大孔</c>
+<l>    Type := 'K'</l>
+<l>elseif (Thickness &gt;= WMinThicknessRatio * Radius)</l>
+<c>    * W 污渍：实心的厚块</c>
+<l>    Type := 'W'</l>
+<l>elseif (Length &gt;= HMinLengthRatio * Radius)</l>
+<c>    * H 划痕：细长的开放线条</c>
+<l>    Type := 'H'</l>
+<l>else</l>
+<l>    Type := ''</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="dd_classify_region">
+<parameters>
+<parameter id="Contrast"/>
+<parameter id="EdgeGap"/>
+<parameter id="HoleRatio"/>
+<parameter id="Length"/>
+<parameter id="Params"/>
+<parameter id="PocketArea"/>
+<parameter id="Radius"/>
+<parameter id="Thickness"/>
+<parameter id="Type"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_detect">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Disk" base_type="iconic" dimension="0"/>
+<par name="RawRegion" base_type="iconic" dimension="0"/>
+<par name="Candidates" base_type="iconic" dimension="0"/>
+<par name="Defects" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Found" base_type="ctrl" dimension="0"/>
+<par name="Row" base_type="ctrl" dimension="0"/>
+<par name="Column" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+<par name="Category" base_type="ctrl" dimension="0"/>
+<par name="Result" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 完整识别：找圆 → 分割 → 每个候选算特征并分类 → 选主缺陷，给出整张图的类别。</c>
+<c>* Category：'Q' / 'H' / 'K' / 'W'，没有缺陷或没找到圆时为 'NONE'。</c>
+<c>* Result：字典，每个键是一列特征，第 i 个元素对应 Defects 里的第 i 个区域。</c>
+<l>gen_empty_region (RawRegion)</l>
+<l>gen_empty_obj (Candidates)</l>
+<l>gen_empty_obj (Defects)</l>
+<l>Category := 'NONE'</l>
+<l>Types := []</l>
+<l>Areas := []</l>
+<l>Contrasts := []</l>
+<l>EdgeGaps := []</l>
+<l>PocketAreas := []</l>
+<l>HoleRatios := []</l>
+<l>Thicknesses := []</l>
+<l>Lengths := []</l>
+<l>Scores := []</l>
+<l>IsMain := []</l>
+<c>* 1 找圆</c>
+<l>dd_locate_disk (Image, Disk, Params, Found, Row, Column, Radius)</l>
+<l>if (Found == 1)</l>
+<c>    * 2 分割出候选</c>
+<l>    dd_segment (Image, Disk, RawRegion, Candidates, Params, Radius)</l>
+<l>    dd_make_roi (Disk, Roi, Params, Radius)</l>
+<l>    dd_to_gray (Image, Gray)</l>
+<c>    * 3 每个候选算特征、分类；有类别的放进 Defects</c>
+<l>    count_obj (Candidates, CandidateCount)</l>
+<l>    for Index := 1 to CandidateCount by 1</l>
+<l>        select_obj (Candidates, Candidate, Index)</l>
+<l>        dd_region_features (Candidate, Roi, Gray, Params, Row, Column, Radius, Area, Contrast, EdgeGap, PocketArea, HoleRatio, Thickness, Length)</l>
+<l>        dd_classify_region (Params, Radius, Contrast, EdgeGap, PocketArea, HoleRatio, Thickness, Length, Type)</l>
+<l>        if (Type != '')</l>
+<l>            concat_obj (Defects, Candidate, Defects)</l>
+<l>            Types := [Types, Type]</l>
+<l>            Areas := [Areas, Area]</l>
+<l>            Contrasts := [Contrasts, round(Contrast * 10) / 10.0]</l>
+<l>            EdgeGaps := [EdgeGaps, round(EdgeGap * 10) / 10.0]</l>
+<l>            PocketAreas := [PocketAreas, PocketArea]</l>
+<l>            HoleRatios := [HoleRatios, round(HoleRatio * 1000) / 1000.0]</l>
+<l>            Thicknesses := [Thicknesses, round(Thickness * 10) / 10.0]</l>
+<l>            Lengths := [Lengths, Length]</l>
+<l>            Scores := [Scores, round(Area * Contrast)]</l>
+<l>        endif</l>
+<l>    endfor</l>
+<c>    * 4 主缺陷 = 得分（面积 × 对比度）最高的一个，它的类别就是整张图的类别</c>
+<l>    if (|Types| &gt; 0)</l>
+<l>        tuple_max (Scores, MaxScore)</l>
+<l>        tuple_find (Scores, MaxScore, MainIndex)</l>
+<l>        Category := Types[MainIndex[0]]</l>
+<l>        IsMain := gen_tuple_const(|Types|, 0)</l>
+<l>        IsMain[MainIndex[0]] := 1</l>
+<l>    endif</l>
+<l>endif</l>
+<c>* 5 特征表（按列存放）</c>
+<l>create_dict (Result)</l>
+<l>set_dict_tuple (Result, 'type', Types)</l>
+<l>set_dict_tuple (Result, 'is_main', IsMain)</l>
+<l>set_dict_tuple (Result, 'area', Areas)</l>
+<l>set_dict_tuple (Result, 'contrast', Contrasts)</l>
+<l>set_dict_tuple (Result, 'edge_gap', EdgeGaps)</l>
+<l>set_dict_tuple (Result, 'pocket_area', PocketAreas)</l>
+<l>set_dict_tuple (Result, 'hole_ratio', HoleRatios)</l>
+<l>set_dict_tuple (Result, 'thickness', Thicknesses)</l>
+<l>set_dict_tuple (Result, 'length', Lengths)</l>
+<l>set_dict_tuple (Result, 'score', Scores)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_detect">
+<parameters>
+<parameter id="Candidates"/>
+<parameter id="Category"/>
+<parameter id="Column"/>
+<parameter id="Defects"/>
+<parameter id="Disk"/>
+<parameter id="Found"/>
+<parameter id="Image"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="RawRegion"/>
+<parameter id="Result"/>
+<parameter id="Row"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="augment_image">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Augmented" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Mode" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<c>* 稳健性测试用的图像变换（只在 main 里用，上位机不调用）。</c>
+<l>if (Mode == 'rot90')</l>
+<l>    rotate_image (Image, Augmented, 90, 'constant')</l>
+<l>elseif (Mode == 'rot180')</l>
+<l>    rotate_image (Image, Augmented, 180, 'constant')</l>
+<l>elseif (Mode == 'rot30')</l>
+<l>    rotate_image (Image, Augmented, 30, 'constant')</l>
+<l>elseif (Mode == 'mirror')</l>
+<l>    mirror_image (Image, Augmented, 'column')</l>
+<l>elseif (Mode == 'scale0.8')</l>
+<l>    zoom_image_factor (Image, Augmented, 0.8, 0.8, 'constant')</l>
+<l>elseif (Mode == 'dark0.85')</l>
+<l>    scale_image (Image, Augmented, 0.85, 0)</l>
+<l>elseif (Mode == 'noise')</l>
+<l>    add_noise_white (Image, Augmented, 30)</l>
+<l>else</l>
+<l>    copy_obj (Image, Augmented, 1, 1)</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="augment_image">
+<parameters>
+<parameter id="Augmented"/>
+<parameter id="Image"/>
+<parameter id="Mode"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="write_feature_rows">
+<interface>
+<ic>
+<par name="FileHandle" base_type="ctrl" dimension="0"/>
+<par name="Name" base_type="ctrl" dimension="0"/>
+<par name="Result" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<c>* 把 Result 字典按"每个缺陷一行"写进特征表 CSV（只在 main 里用）。</c>
+<l>get_dict_tuple (Result, 'type', Types)</l>
+<l>get_dict_tuple (Result, 'is_main', IsMain)</l>
+<l>get_dict_tuple (Result, 'area', Areas)</l>
+<l>get_dict_tuple (Result, 'contrast', Contrasts)</l>
+<l>get_dict_tuple (Result, 'edge_gap', EdgeGaps)</l>
+<l>get_dict_tuple (Result, 'pocket_area', PocketAreas)</l>
+<l>get_dict_tuple (Result, 'hole_ratio', HoleRatios)</l>
+<l>get_dict_tuple (Result, 'thickness', Thicknesses)</l>
+<l>get_dict_tuple (Result, 'length', Lengths)</l>
+<l>get_dict_tuple (Result, 'score', Scores)</l>
+<l>for Index := 0 to |Types| - 1 by 1</l>
+<l>    fwrite_string (FileHandle, Name + ',' + (Index + 1) + ',' + Types[Index] + ',' + IsMain[Index] + ',' + Areas[Index] + ',' + Contrasts[Index] + ',' + EdgeGaps[Index] + ',' + PocketAreas[Index] + ',' + HoleRatios[Index] + ',' + Thicknesses[Index] + ',' + Lengths[Index] + ',' + Scores[Index] + '\n')</l>
+<l>endfor</l>
+<l>return ()</l>
+</body>
+<docu id="write_feature_rows">
+<parameters>
+<parameter id="FileHandle"/>
+<parameter id="Name"/>
+<parameter id="Result"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="draw_result">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+<par name="Disk" base_type="iconic" dimension="0"/>
+<par name="Candidates" base_type="iconic" dimension="0"/>
+<par name="Defects" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="FileName" base_type="ctrl" dimension="0"/>
+<par name="Category" base_type="ctrl" dimension="0"/>
+<par name="Expected" base_type="ctrl" dimension="0"/>
+<par name="Result" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<c>* 画效果图并存成 PNG（只在 main 里用）：</c>
+<c>* 绿色 = 圆片边缘，黄色细线 = 候选，彩色粗线 = 缺陷（Q 红、H 蓝、K 橙、W 紫）。</c>
+<l>get_image_size (Image, Width, Height)</l>
+<l>open_window (0, 0, Width, Height, 0, 'buffer', '', WindowHandle)</l>
+<l>set_part (WindowHandle, 0, 0, Height - 1, Width - 1)</l>
+<l>disp_obj (Image, WindowHandle)</l>
+<l>set_draw (WindowHandle, 'margin')</l>
+<l>set_line_width (WindowHandle, 2)</l>
+<l>set_color (WindowHandle, 'green')</l>
+<l>disp_obj (Disk, WindowHandle)</l>
+<l>set_line_width (WindowHandle, 1)</l>
+<l>set_color (WindowHandle, 'yellow')</l>
+<l>disp_obj (Candidates, WindowHandle)</l>
+<l>get_dict_tuple (Result, 'type', Types)</l>
+<l>set_line_width (WindowHandle, 3)</l>
+<l>for Index := 0 to |Types| - 1 by 1</l>
+<l>    if (Types[Index] == 'Q')</l>
+<l>        set_color (WindowHandle, 'red')</l>
+<l>    elseif (Types[Index] == 'H')</l>
+<l>        set_color (WindowHandle, 'blue')</l>
+<l>    elseif (Types[Index] == 'K')</l>
+<l>        set_color (WindowHandle, 'orange')</l>
+<l>    else</l>
+<l>        set_color (WindowHandle, 'magenta')</l>
+<l>    endif</l>
+<l>    select_obj (Defects, Defect, Index + 1)</l>
+<l>    disp_obj (Defect, WindowHandle)</l>
+<l>endfor</l>
+<l>if (Category == Expected or Expected == '')</l>
+<l>    TextColor := 'forest green'</l>
+<l>else</l>
+<l>    TextColor := 'red'</l>
+<l>endif</l>
+<l>disp_text (WindowHandle, 'result: ' + Category + '   expected: ' + Expected, 'window', 12, 12, TextColor, 'box_color', 'white')</l>
+<l>dump_window (WindowHandle, 'png', FileName)</l>
+<l>close_window (WindowHandle)</l>
+<l>return ()</l>
+</body>
+<docu id="draw_result">
+<parameters>
+<parameter id="Candidates"/>
+<parameter id="Category"/>
+<parameter id="Defects"/>
+<parameter id="Disk"/>
+<parameter id="Expected"/>
+<parameter id="FileName"/>
+<parameter id="Image"/>
+<parameter id="Result"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

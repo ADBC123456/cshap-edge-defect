@@ -1,0 +1,295 @@
+<!--
+    仓储管理页。
+    左边：4 列 × 3 行库位图（12 个 SlotCard 直接写死在网格里），每列上面是类别下拉框，下面是"整列出库"。
+    右边：手动入库测试、入库任务和操作日志。
+    页面数据来自 WarehouseViewModel。
+-->
+<UserControl x:Class="DiscSorter.App.Views.WarehouseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DiscSorter.App.ViewModels"
+             xmlns:controls="clr-namespace:DiscSorter.App.Controls"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:WarehouseViewModel, IsDesignTimeCreatable=True}"
+             d:DesignWidth="1150"
+             d:DesignHeight="760">
+
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="360"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ==================== 左边：库位图 ==================== -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- 标题 -->
+            <StackPanel Grid.Row="0"
+                        Margin="0,0,0,12">
+                <TextBlock Text="仓储管理"
+                           Style="{StaticResource PageTitle}"/>
+                <TextBlock Text="4 列 × 3 行。每列从 Q / H / K / W / NG 中选一个类别（不能重复），同类工件按行 1→3 依次入库；该列满了或该类没有库区，下发库位 0 并报警。"
+                           Style="{StaticResource HintText}"
+                           Margin="0,4,0,0"/>
+                <TextBlock Text="{Binding UnmappedText}"
+                           Foreground="{StaticResource WarningBrush}"
+                           Margin="0,2,0,0"/>
+            </StackPanel>
+
+            <!-- 库位图：5 行（列标题、行 1、行 2、行 3、整列出库按钮）× 4 列 -->
+            <Border Grid.Row="1"
+                    Style="{StaticResource Panel}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- ===== 列标题：列号、空闲数、类别下拉框 ===== -->
+
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="4,0,4,8">
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right"
+                                       Text="{Binding Columns[0].FreeText}"
+                                       Style="{StaticResource HintText}"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Columns[0].Title}"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"/>
+                        </DockPanel>
+                        <ComboBox ItemsSource="{Binding CategoryOptions}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding Columns[0].SelectedCategory}"
+                                  Margin="0,6,0,0"/>
+                        <TextBlock Text="未保存"
+                                   FontSize="12"
+                                   Foreground="{StaticResource WarningBrush}"
+                                   Visibility="{Binding Columns[0].IsDirty, Converter={StaticResource BoolToVisibility}}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="4,0,4,8">
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right"
+                                       Text="{Binding Columns[1].FreeText}"
+                                       Style="{StaticResource HintText}"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Columns[1].Title}"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"/>
+                        </DockPanel>
+                        <ComboBox ItemsSource="{Binding CategoryOptions}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding Columns[1].SelectedCategory}"
+                                  Margin="0,6,0,0"/>
+                        <TextBlock Text="未保存"
+                                   FontSize="12"
+                                   Foreground="{StaticResource WarningBrush}"
+                                   Visibility="{Binding Columns[1].IsDirty, Converter={StaticResource BoolToVisibility}}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="2"
+                                Margin="4,0,4,8">
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right"
+                                       Text="{Binding Columns[2].FreeText}"
+                                       Style="{StaticResource HintText}"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Columns[2].Title}"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"/>
+                        </DockPanel>
+                        <ComboBox ItemsSource="{Binding CategoryOptions}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding Columns[2].SelectedCategory}"
+                                  Margin="0,6,0,0"/>
+                        <TextBlock Text="未保存"
+                                   FontSize="12"
+                                   Foreground="{StaticResource WarningBrush}"
+                                   Visibility="{Binding Columns[2].IsDirty, Converter={StaticResource BoolToVisibility}}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="3"
+                                Margin="4,0,4,8">
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right"
+                                       Text="{Binding Columns[3].FreeText}"
+                                       Style="{StaticResource HintText}"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Columns[3].Title}"
+                                       FontSize="15"
+                                       FontWeight="SemiBold"/>
+                        </DockPanel>
+                        <ComboBox ItemsSource="{Binding CategoryOptions}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding Columns[3].SelectedCategory}"
+                                  Margin="0,6,0,0"/>
+                        <TextBlock Text="未保存"
+                                   FontSize="12"
+                                   Foreground="{StaticResource WarningBrush}"
+                                   Visibility="{Binding Columns[3].IsDirty, Converter={StaticResource BoolToVisibility}}"/>
+                    </StackPanel>
+
+                    <!-- ===== 12 个库位。库位号 = (列 - 1) × 3 + 行，Slots[库位号 - 1] ===== -->
+
+                    <!-- 列 1：库位 1、2、3 -->
+                    <controls:SlotCard Grid.Row="1" Grid.Column="0" Margin="4" DataContext="{Binding Slots[0]}"/>
+                    <controls:SlotCard Grid.Row="2" Grid.Column="0" Margin="4" DataContext="{Binding Slots[1]}"/>
+                    <controls:SlotCard Grid.Row="3" Grid.Column="0" Margin="4" DataContext="{Binding Slots[2]}"/>
+
+                    <!-- 列 2：库位 4、5、6 -->
+                    <controls:SlotCard Grid.Row="1" Grid.Column="1" Margin="4" DataContext="{Binding Slots[3]}"/>
+                    <controls:SlotCard Grid.Row="2" Grid.Column="1" Margin="4" DataContext="{Binding Slots[4]}"/>
+                    <controls:SlotCard Grid.Row="3" Grid.Column="1" Margin="4" DataContext="{Binding Slots[5]}"/>
+
+                    <!-- 列 3：库位 7、8、9 -->
+                    <controls:SlotCard Grid.Row="1" Grid.Column="2" Margin="4" DataContext="{Binding Slots[6]}"/>
+                    <controls:SlotCard Grid.Row="2" Grid.Column="2" Margin="4" DataContext="{Binding Slots[7]}"/>
+                    <controls:SlotCard Grid.Row="3" Grid.Column="2" Margin="4" DataContext="{Binding Slots[8]}"/>
+
+                    <!-- 列 4：库位 10、11、12 -->
+                    <controls:SlotCard Grid.Row="1" Grid.Column="3" Margin="4" DataContext="{Binding Slots[9]}"/>
+                    <controls:SlotCard Grid.Row="2" Grid.Column="3" Margin="4" DataContext="{Binding Slots[10]}"/>
+                    <controls:SlotCard Grid.Row="3" Grid.Column="3" Margin="4" DataContext="{Binding Slots[11]}"/>
+
+                    <!-- ===== 整列出库按钮 ===== -->
+
+                    <Button Grid.Row="4"
+                            Grid.Column="0"
+                            Content="整列出库"
+                            Margin="4,8,4,0"
+                            Command="{Binding Columns[0].ClearColumnCommand}"/>
+                    <Button Grid.Row="4"
+                            Grid.Column="1"
+                            Content="整列出库"
+                            Margin="4,8,4,0"
+                            Command="{Binding Columns[1].ClearColumnCommand}"/>
+                    <Button Grid.Row="4"
+                            Grid.Column="2"
+                            Content="整列出库"
+                            Margin="4,8,4,0"
+                            Command="{Binding Columns[2].ClearColumnCommand}"/>
+                    <Button Grid.Row="4"
+                            Grid.Column="3"
+                            Content="整列出库"
+                            Margin="4,8,4,0"
+                            Command="{Binding Columns[3].ClearColumnCommand}"/>
+                </Grid>
+            </Border>
+
+            <!-- 底部按钮和提示 -->
+            <Border Grid.Row="2"
+                    Style="{StaticResource Panel}"
+                    Margin="0,12,0,0"
+                    Padding="10">
+                <DockPanel>
+                    <Button Content="保存映射"
+                            Style="{StaticResource PrimaryButton}"
+                            Command="{Binding SaveMappingsCommand}"/>
+                    <Button Content="撤销修改"
+                            Command="{Binding RevertMappingsCommand}"/>
+                    <Button Content="全部出库"
+                            Style="{StaticResource DangerButton}"
+                            Command="{Binding ClearAllCommand}"/>
+                    <TextBlock Text="{Binding Message}"
+                               VerticalAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="8,0,0,0">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+                                <Style.Triggers>
+                                    <!-- 错误提示用红色 -->
+                                    <DataTrigger Binding="{Binding MessageIsError}" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource ErrorBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DockPanel>
+            </Border>
+        </Grid>
+
+        <!-- ==================== 右边：手动入库测试、任务、日志 ==================== -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Style="{StaticResource Panel}"
+                    Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="手动入库测试"
+                               Style="{StaticResource SectionTitle}"/>
+                    <TextBlock Text="不经过 PLC，按当前映射直接分配库位并记为已入库，用来检查分配规则。"
+                               Style="{StaticResource HintText}"
+                               Margin="0,0,0,8"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox Width="140"
+                                  Margin="0,0,8,0"
+                                  ItemsSource="{Binding CategoryOptions}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding TestCategory}"/>
+                        <Button Content="入库"
+                                Style="{StaticResource PrimaryButton}"
+                                Command="{Binding TestStoreCommand}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <TabControl Grid.Row="1">
+                <TabItem Header="入库任务">
+                    <DataGrid ItemsSource="{Binding RecentTasks}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="任务" Binding="{Binding TaskId}"/>
+                            <DataGridTextColumn Header="类别" Binding="{Binding CategoryText}"/>
+                            <DataGridTextColumn Header="库位" Binding="{Binding SlotNo}"/>
+                            <DataGridTextColumn Header="状态" Binding="{Binding StatusText}"/>
+                            <DataGridTextColumn Header="时间" Binding="{Binding CreatedAt, StringFormat=MM-dd HH:mm:ss}"/>
+                            <DataGridTextColumn Header="备注" Binding="{Binding Note}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem Header="操作日志">
+                    <DataGrid ItemsSource="{Binding RecentLogs}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="时间" Binding="{Binding Time, StringFormat=MM-dd HH:mm:ss}"/>
+                            <DataGridTextColumn Header="事件" Binding="{Binding EventType}"/>
+                            <DataGridTextColumn Header="内容" Binding="{Binding Message}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</UserControl>

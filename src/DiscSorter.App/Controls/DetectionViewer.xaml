@@ -1,0 +1,22 @@
+<!--
+    显示识别结果的图像控件（内部是 HALCON 的 HSmartWindowControlWPF）。
+    HALCON 窗口在程序运行时才创建（见 DetectionViewer.xaml.cs），
+    在 VS 设计器里只显示下面这个占位文字，所以设计器不会因为 HALCON 报错。
+-->
+<UserControl x:Class="DiscSorter.App.Controls.DetectionViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="400"
+             d:DesignHeight="300">
+
+    <Grid x:Name="Host">
+        <TextBlock x:Name="Placeholder"
+                   Text="图像显示区（运行时显示 HALCON 图像）"
+                   Foreground="#9CA3AF"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,7 @@
+file,expected,predicted,all_types,circle_found,row,col,radius,time_ms
+K_1.png,K,K,K,1,243.30,271.81,148.66,36.4
+K_2.png,K,K,K,1,239.90,289.81,148.29,28.8
+K_3.png,K,K,K,1,266.80,283.24,148.17,37.7
+K_4.png,K,K,K,1,266.96,283.18,148.23,35.7
+K_5.png,K,K,K,1,281.96,287.17,148.70,31.2
+NONE_1.png,NONE,NONE,,0,0.00,0.00,0.00,10.5

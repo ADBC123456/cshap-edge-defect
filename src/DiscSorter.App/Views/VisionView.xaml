@@ -1,0 +1,314 @@
+<!--
+    视觉调试页。
+    左：算法程序、图像源、显示图层、算法参数。
+    右：图像（单图或三图并排）、识别结果、特征表。
+    自动运行时整页被一层半透明遮罩盖住（锁定）。
+    页面数据来自 VisionViewModel。
+-->
+<UserControl x:Class="DiscSorter.App.Views.VisionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DiscSorter.App.ViewModels"
+             xmlns:controls="clr-namespace:DiscSorter.App.Controls"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:VisionViewModel, IsDesignTimeCreatable=True}"
+             d:DesignWidth="1150"
+             d:DesignHeight="760">
+
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ==================== 左：设置区 ==================== -->
+        <ScrollViewer Grid.Column="0"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="视觉调试"
+                           Style="{StaticResource PageTitle}"
+                           Margin="0,0,0,12"/>
+
+                <!-- 算法程序 -->
+                <Border Style="{StaticResource Panel}"
+                        Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="算法程序（HDevEngine）"
+                                   Style="{StaticResource SectionTitle}"/>
+                        <TextBox Text="{Binding ProgramPath, Mode=OneWay}"
+                                 IsReadOnly="True"
+                                 ToolTip="{Binding ProgramPath}"/>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,8,0,0">
+                            <Button Content="重新加载"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Command="{Binding ReloadProgramCommand}"/>
+                            <Button Content="选择程序…"
+                                    Command="{Binding BrowseProgramCommand}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding ProgramStatus}"
+                                   Style="{StaticResource HintText}"
+                                   Margin="0,8,0,0"/>
+                        <TextBlock Margin="0,4,0,0">
+                            <Run Text="当前能力：" Foreground="{StaticResource MutedTextBrush}"/>
+                            <Run Text="{Binding CapabilityText, Mode=OneWay}" FontWeight="SemiBold"/>
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+
+                <!-- 图像源 -->
+                <Border Style="{StaticResource Panel}"
+                        Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="图像源"
+                                   Style="{StaticResource SectionTitle}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="打开图片…"
+                                    Command="{Binding OpenImageCommand}"/>
+                            <Button Content="打开文件夹…"
+                                    Command="{Binding OpenFolderCommand}"/>
+                            <Button Content="相机取图"
+                                    ToolTip="从“相机”页打开的海康相机拍一张"
+                                    Command="{Binding GrabFromCameraCommand}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding ImageText}"
+                                   FontWeight="SemiBold"
+                                   Margin="0,8,0,0"/>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,8,0,0">
+                            <Button Content="◀ 上一张"
+                                    Command="{Binding PreviousImageCommand}"/>
+                            <Button Content="下一张 ▶"
+                                    Command="{Binding NextImageCommand}"/>
+                            <Button Content="重新识别"
+                                    Command="{Binding RedetectCommand}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- 显示图层 -->
+                <Border Style="{StaticResource Panel}"
+                        Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="显示图层"
+                                   Style="{StaticResource SectionTitle}"/>
+                        <WrapPanel>
+                            <CheckBox Content="圆定位" IsChecked="{Binding ShowDisk}"/>
+                            <CheckBox Content="原始分割" IsChecked="{Binding ShowRawRegion}"/>
+                            <CheckBox Content="候选区域" IsChecked="{Binding ShowCandidates}"/>
+                            <CheckBox Content="缺陷" IsChecked="{Binding ShowDefects}"/>
+                            <CheckBox Content="标签" IsChecked="{Binding ShowLabels}"/>
+                        </WrapPanel>
+                        <CheckBox Content="三图并排（原图 | 标注 | 掩膜）"
+                                  IsChecked="{Binding TripleView}"/>
+                        <TextBlock Text="滚轮缩放，拖动平移，双击复位。"
+                                   Style="{StaticResource HintText}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- 算法参数 -->
+                <Border Style="{StaticResource Panel}">
+                    <StackPanel>
+                        <DockPanel>
+                            <CheckBox DockPanel.Dock="Right"
+                                      Content="实时预览"
+                                      IsChecked="{Binding LivePreview}"
+                                      Margin="0"/>
+                            <TextBlock Text="算法参数"
+                                       Style="{StaticResource SectionTitle}"/>
+                        </DockPanel>
+                        <TextBlock Text="来自 dd_default_params；点“保存”写入 halcon\detector.json，自动运行时也用这组参数。"
+                                   Style="{StaticResource HintText}"
+                                   Margin="0,0,0,8"/>
+
+                        <!-- 参数的个数由 .hdev 决定，所以这里用列表：每个参数按下面的模板显示一行 -->
+                        <ItemsControl ItemsSource="{Binding Parameters}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:ParameterItemViewModel}">
+                                    <StackPanel Margin="0,0,0,10"
+                                                ToolTip="{Binding ToolTip}">
+                                        <DockPanel>
+                                            <TextBox DockPanel.Dock="Right"
+                                                     Width="70"
+                                                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBlock VerticalAlignment="Center">
+                                                <Run Text="{Binding Label, Mode=OneWay}"/>
+                                                <Run Text="{Binding DefaultText, Mode=OneWay}"
+                                                     FontSize="11"
+                                                     Foreground="{StaticResource MutedTextBrush}"/>
+                                            </TextBlock>
+                                        </DockPanel>
+                                        <Slider Margin="0,4,0,0"
+                                                Minimum="{Binding Minimum}"
+                                                Maximum="{Binding Maximum}"
+                                                SmallChange="{Binding Step}"
+                                                LargeChange="{Binding Step}"
+                                                Value="{Binding SliderValue}"
+                                                Visibility="{Binding HasRange, Converter={StaticResource BoolToVisibility}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,4,0,0">
+                            <Button Content="应用"
+                                    Command="{Binding ApplyParametersCommand}"/>
+                            <Button Content="保存"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Command="{Binding SaveParametersCommand}"/>
+                            <Button Content="恢复默认"
+                                    Command="{Binding ResetParametersCommand}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding ParameterMessage}"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   TextWrapping="Wrap"
+                                   Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- ==================== 右：图像、结果、特征表 ==================== -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="180"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Style="{StaticResource ImagePanel}">
+                <Grid>
+                    <!-- 单图（默认） -->
+                    <controls:DetectionViewer Result="{Binding Result}"
+                                              HighlightIndex="{Binding SelectedFeatureIndex}"
+                                              ShowDisk="{Binding ShowDisk}"
+                                              ShowRawRegion="{Binding ShowRawRegion}"
+                                              ShowCandidates="{Binding ShowCandidates}"
+                                              ShowDefects="{Binding ShowDefects}"
+                                              ShowLabels="{Binding ShowLabels}">
+                        <controls:DetectionViewer.Style>
+                            <Style TargetType="controls:DetectionViewer">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding TripleView}" Value="True">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </controls:DetectionViewer.Style>
+                    </controls:DetectionViewer>
+
+                    <!-- 三图并排（勾选"三图并排"时显示） -->
+                    <Grid Visibility="{Binding TripleView, Converter={StaticResource BoolToVisibility}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <controls:DetectionViewer Grid.Row="0"
+                                                  Grid.Column="0"
+                                                  Margin="2"
+                                                  Result="{Binding Result}"
+                                                  Mode="Original"/>
+                        <controls:DetectionViewer Grid.Row="0"
+                                                  Grid.Column="1"
+                                                  Margin="2"
+                                                  Result="{Binding Result}"
+                                                  HighlightIndex="{Binding SelectedFeatureIndex}"
+                                                  ShowDisk="{Binding ShowDisk}"
+                                                  ShowRawRegion="{Binding ShowRawRegion}"
+                                                  ShowCandidates="{Binding ShowCandidates}"
+                                                  ShowDefects="{Binding ShowDefects}"
+                                                  ShowLabels="{Binding ShowLabels}"/>
+                        <controls:DetectionViewer Grid.Row="0"
+                                                  Grid.Column="2"
+                                                  Margin="2"
+                                                  Result="{Binding Result}"
+                                                  Mode="Mask"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="相机原图" Foreground="#9CA3AF" Margin="8,4"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="算法标注" Foreground="#9CA3AF" Margin="8,4"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="分割掩膜" Foreground="#9CA3AF" Margin="8,4"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- 识别结果 -->
+            <Border Grid.Row="1"
+                    Style="{StaticResource Panel}"
+                    Margin="0,12,0,12"
+                    Padding="14,10">
+                <StackPanel>
+                    <WrapPanel>
+                        <TextBlock Margin="0,0,24,0">
+                            <Run Text="判定：" Foreground="{StaticResource MutedTextBrush}"/>
+                            <Run Text="{Binding CategoryText, Mode=OneWay}" FontWeight="Bold" FontSize="15"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,0,24,0">
+                            <Run Text="圆盘：" Foreground="{StaticResource MutedTextBrush}"/>
+                            <Run Text="{Binding CircleText, Mode=OneWay}"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,0,24,0"
+                                   Text="{Binding CountText}"/>
+                        <TextBlock Margin="0,0,24,0">
+                            <Run Text="识别耗时：" Foreground="{StaticResource MutedTextBrush}"/>
+                            <Run Text="{Binding TimeText, Mode=OneWay}"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="文件名真值：" Foreground="{StaticResource MutedTextBrush}"/>
+                            <Run Text="{Binding ExpectedText, Mode=OneWay}"/>
+                        </TextBlock>
+                    </WrapPanel>
+                    <TextBlock Text="{Binding ResultMessage}"
+                               TextWrapping="Wrap"
+                               Margin="0,6,0,0">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{StaticResource MutedTextBrush}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ResultHasError}" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource ErrorBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <!-- 特征表：列由 dd_detect 的 Result 字典决定，所以自动生成列 -->
+            <DataGrid Grid.Row="2"
+                      ItemsSource="{Binding FeatureTable}"
+                      AutoGenerateColumns="True"
+                      SelectionMode="Single"
+                      SelectedIndex="{Binding SelectedFeatureIndex}"/>
+        </Grid>
+
+        <!-- ==================== 自动运行时的锁定遮罩 ==================== -->
+        <Border Grid.ColumnSpan="3"
+                Background="#CC1F2A44"
+                CornerRadius="6"
+                Visibility="{Binding IsLocked, Converter={StaticResource BoolToVisibility}}">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="自动运行中，视觉调试已锁定"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="识别器和参数正被分拣流程使用。到“监控”页停止自动运行后即可继续调试。"
+                           Foreground="#E5E7EB"
+                           Margin="0,8,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

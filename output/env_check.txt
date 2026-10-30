@@ -1,0 +1,1 @@
+version=23.11 channels=3 size=448x450 json={"dyn_threshold_offset":22} offset=22

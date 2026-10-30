@@ -1,0 +1,16 @@
+<!--
+    程序入口。没有写 StartupUri：主窗口在 App.xaml.cs 的 OnStartup 里创建，
+    因为要先建数据库、创建各个服务，再把数据交给窗口。
+-->
+<Application x:Class="DiscSorter.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- 全部颜色和样式 -->
+                <ResourceDictionary Source="Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

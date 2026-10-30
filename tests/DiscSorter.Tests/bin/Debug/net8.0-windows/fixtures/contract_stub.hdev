@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="23.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>* 接口测试桩：只用来验证上位机与 HALCON 过程接口约定是否对得上。</c>
+<c>* 这里的"找圆"和"分割"都是故意写死的简单做法，不是论文算法，算法请看 halcon/DiscDefect.hdev。</c>
+<l>ProjectDir := 'E:/woker/c#edge-defect'</l>
+<l>read_image (Image, ProjectDir + '/data/samples/Q_1.jpg')</l>
+<l>dd_default_params (Params)</l>
+<l>dd_detect (Image, Disk, RawRegion, Candidates, Defects, Params, Found, Row, Column, Radius, Category, Result)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+<procedure name="dd_default_params">
+<interface>
+<oc>
+<par name="Params" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>create_dict (Params)</l>
+<l>set_dict_tuple (Params, 'stub_threshold', 80)</l>
+<l>set_dict_tuple (Params, 'min_component_area', 20)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_default_params">
+<parameters>
+<parameter id="Params"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_locate_disk">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Disk" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Found" base_type="ctrl" dimension="0"/>
+<par name="Row" base_type="ctrl" dimension="0"/>
+<par name="Column" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 测试桩：固定取图像中心、0.4 倍短边为半径</c>
+<l>get_image_size (Image, Width, Height)</l>
+<l>Row := Height / 2.0</l>
+<l>Column := Width / 2.0</l>
+<l>Radius := 0.4 * min([Width, Height])</l>
+<l>gen_circle (Disk, Row, Column, Radius)</l>
+<l>Found := 1</l>
+<l>return ()</l>
+</body>
+<docu id="dd_locate_disk">
+<parameters>
+<parameter id="Column"/>
+<parameter id="Disk"/>
+<parameter id="Found"/>
+<parameter id="Image"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="Row"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_segment">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+<par name="Disk" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="RawRegion" base_type="iconic" dimension="0"/>
+<par name="Candidates" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+</ic>
+</interface>
+<body>
+<c>* 测试桩：圆内固定阈值</c>
+<l>get_dict_tuple (Params, 'stub_threshold', Threshold)</l>
+<l>get_dict_tuple (Params, 'min_component_area', MinArea)</l>
+<l>count_channels (Image, Channels)</l>
+<l>if (Channels &gt;= 3)</l>
+<l>    rgb1_to_gray (Image, Gray)</l>
+<l>else</l>
+<l>    copy_obj (Image, Gray, 1, 1)</l>
+<l>endif</l>
+<l>reduce_domain (Gray, Disk, Reduced)</l>
+<l>threshold (Reduced, RawRegion, 0, Threshold)</l>
+<l>connection (RawRegion, Connected)</l>
+<l>select_shape (Connected, Candidates, 'area', 'and', MinArea, 99999999)</l>
+<l>return ()</l>
+</body>
+<docu id="dd_segment">
+<parameters>
+<parameter id="Candidates"/>
+<parameter id="Disk"/>
+<parameter id="Image"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="RawRegion"/>
+</parameters>
+</docu>
+</procedure>
+<procedure name="dd_detect">
+<interface>
+<io>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<oo>
+<par name="Disk" base_type="iconic" dimension="0"/>
+<par name="RawRegion" base_type="iconic" dimension="0"/>
+<par name="Candidates" base_type="iconic" dimension="0"/>
+<par name="Defects" base_type="iconic" dimension="0"/>
+</oo>
+<ic>
+<par name="Params" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Found" base_type="ctrl" dimension="0"/>
+<par name="Row" base_type="ctrl" dimension="0"/>
+<par name="Column" base_type="ctrl" dimension="0"/>
+<par name="Radius" base_type="ctrl" dimension="0"/>
+<par name="Category" base_type="ctrl" dimension="0"/>
+<par name="Result" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* 测试桩：每个候选都标成 H，Result 按列存放特征</c>
+<l>dd_locate_disk (Image, Disk, Params, Found, Row, Column, Radius)</l>
+<l>dd_segment (Image, Disk, RawRegion, Candidates, Params, Radius)</l>
+<l>count_obj (Candidates, Number)</l>
+<l>area_center (Candidates, Area, CenterRow, CenterColumn)</l>
+<l>create_dict (Result)</l>
+<l>set_dict_tuple (Result, 'type', gen_tuple_const(Number, 'H'))</l>
+<l>set_dict_tuple (Result, 'area', Area)</l>
+<l>set_dict_tuple (Result, 'row', CenterRow)</l>
+<l>set_dict_tuple (Result, 'column', CenterColumn)</l>
+<l>gen_empty_obj (Defects)</l>
+<l>concat_obj (Defects, Candidates, Defects)</l>
+<l>if (Number &gt; 0)</l>
+<l>    Category := 'H'</l>
+<l>else</l>
+<l>    Category := 'NONE'</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="dd_detect">
+<parameters>
+<parameter id="Candidates"/>
+<parameter id="Category"/>
+<parameter id="Column"/>
+<parameter id="Defects"/>
+<parameter id="Disk"/>
+<parameter id="Found"/>
+<parameter id="Image"/>
+<parameter id="Params"/>
+<parameter id="Radius"/>
+<parameter id="RawRegion"/>
+<parameter id="Result"/>
+<parameter id="Row"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

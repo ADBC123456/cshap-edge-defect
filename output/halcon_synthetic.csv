@@ -1,0 +1,14 @@
+file,expected,predicted,all_types,circle_found,row,col,radius,time_ms
+H_curved.png,H,H,H,1,192.00,191.99,152.54,4.1
+H_curved_with_ghost.png,H,H,H,1,192.00,192.00,152.54,3.7
+H_straight.png,H,H,H,1,192.00,192.00,152.53,3.5
+K_ellipse_ring.png,K,K,K,1,192.00,192.00,152.54,3.4
+K_ring.png,K,K,K,1,192.00,192.00,152.54,3.2
+NONE_clean.png,NONE,NONE,,1,192.00,192.00,152.53,2.6
+NONE_faint_ghost.png,NONE,NONE,,1,192.00,192.00,152.54,2.6
+NONE_radial_line.png,NONE,W,W,1,192.00,192.02,152.55,2.9
+NONE_rim_arc.png,NONE,NONE,,1,197.58,190.67,148.40,5.2
+Q_single_contact_notch.png,Q,W,W,1,192.00,192.14,152.61,3.2
+Q_two_contact_v.png,Q,Q,Q,1,192.00,192.00,152.54,3.2
+W_blob_small_hole.png,W,W,W,1,192.00,191.99,152.54,3.5
+W_large_blob.png,W,W,W,1,192.00,192.00,152.54,3.8

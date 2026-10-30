@@ -1,0 +1,134 @@
+<!--
+    设置页：类别来源、自动运行的图片文件夹、仿真 PLC、文件路径。
+    页面数据来自 SettingsViewModel。改了立刻生效并保存。
+-->
+<UserControl x:Class="DiscSorter.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:DiscSorter.App.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel, IsDesignTimeCreatable=True}"
+             d:DesignWidth="1150"
+             d:DesignHeight="760">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="16"
+                    MaxWidth="760"
+                    HorizontalAlignment="Left">
+
+            <TextBlock Text="设置"
+                       Style="{StaticResource PageTitle}"
+                       Margin="0,0,0,12"/>
+
+            <!-- 类别来源 -->
+            <Border Style="{StaticResource Panel}"
+                    Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="入库类别来源"
+                               Style="{StaticResource SectionTitle}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Content="HALCON 算法"
+                                     IsChecked="{Binding UseAlgorithm}"/>
+                        <RadioButton Content="文件名真值（调试）"
+                                     IsChecked="{Binding UseAlgorithm, Converter={StaticResource InverseBoolean}}"/>
+                    </StackPanel>
+                    <TextBlock Text="算法的 dd_detect 写完之前，选“文件名真值”：按图片文件名前缀（Q_1.jpg → Q）入库，先把仓储和 PLC 流程跑通。"
+                               Style="{StaticResource HintText}"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 自动运行的图像源 -->
+            <Border Style="{StaticResource Panel}"
+                    Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="图片文件夹（“相机”页的图像来源选“图片文件夹”时，自动运行按顺序回放这里的图）"
+                               Style="{StaticResource SectionTitle}"
+                               TextWrapping="Wrap"/>
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right"
+                                Content="选择文件夹…"
+                                Margin="8,0,0,0"
+                                Command="{Binding ChooseRunImageFolderCommand}"/>
+                        <TextBox Text="{Binding RunImageFolder, Mode=OneWay}"
+                                 IsReadOnly="True"/>
+                    </DockPanel>
+                    <TextBlock Text="{Binding RunImageText}"
+                               Style="{StaticResource HintText}"
+                               Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 仿真 PLC -->
+            <Border Style="{StaticResource Panel}"
+                    Margin="0,0,0,12">
+                <StackPanel>
+                    <TextBlock Text="仿真 PLC（“PLC 通讯”页选了仿真 PLC 时有效）"
+                               Style="{StaticResource SectionTitle}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="来件间隔（毫秒）"
+                                   Style="{StaticResource FieldLabel}"/>
+                        <TextBox Grid.Row="0"
+                                 Grid.Column="1"
+                                 Margin="0,0,0,6"
+                                 Text="{Binding ArrivalMs}"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="搬运耗时（毫秒）"
+                                   Style="{StaticResource FieldLabel}"/>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="1"
+                                 Margin="0,0,0,6"
+                                 Text="{Binding SortMs}"/>
+
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="0"
+                                   Text="故障注入"
+                                   Style="{StaticResource FieldLabel}"/>
+                        <ComboBox Grid.Row="2"
+                                  Grid.Column="1"
+                                  ItemsSource="{Binding FaultOptions}"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding SelectedFault}"/>
+                    </Grid>
+                    <TextBlock Text="故障注入用来演示异常处理：“搬运途中卡住”60 秒后库位变为待确认；“放错库位”放完立即变为待确认。待确认的库位到“仓储管理”页处理。"
+                               Style="{StaticResource HintText}"
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 文件路径 -->
+            <Border Style="{StaticResource Panel}">
+                <StackPanel>
+                    <TextBlock Text="文件"
+                               Style="{StaticResource SectionTitle}"/>
+                    <TextBlock Text="数据库文件（库位、映射、任务、记录、日志、设置都在这里，删除会丢失全部数据）"
+                               Style="{StaticResource HintText}"/>
+                    <TextBox Text="{Binding DatabasePath, Mode=OneWay}"
+                             IsReadOnly="True"
+                             Margin="0,4,0,10"/>
+                    <TextBlock Text="HALCON 程序（在“视觉调试”页更换）"
+                               Style="{StaticResource HintText}"/>
+                    <TextBox Text="{Binding ProgramPath, Mode=OneWay}"
+                             IsReadOnly="True"
+                             Margin="0,4,0,0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

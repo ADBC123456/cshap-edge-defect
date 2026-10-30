@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="23.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c>* 环境自检：许可证、路径中的 #、dev_* 算子、JSON 字典</c>
+<l>ProjectDir := 'E:/woker/c#edge-defect'</l>
+<l>get_system ('version', Version)</l>
+<l>read_image (Image, ProjectDir + '/data/samples/Q_1.jpg')</l>
+<l>count_channels (Image, Channels)</l>
+<l>rgb1_to_gray (Image, Gray)</l>
+<l>get_image_size (Gray, Width, Height)</l>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, Width, Height, 'black', WindowHandle)</l>
+<l>dev_display (Gray)</l>
+<l>create_dict (Params)</l>
+<l>set_dict_tuple (Params, 'dyn_threshold_offset', 22)</l>
+<l>dict_to_json (Params, [], [], JsonString)</l>
+<l>json_to_dict (JsonString, [], [], Params2)</l>
+<l>get_dict_tuple (Params2, 'dyn_threshold_offset', Offset)</l>
+<l>open_file (ProjectDir + '/output/env_check.txt', 'output', FileHandle)</l>
+<l>fwrite_string (FileHandle, 'version=' + Version + ' channels=' + Channels + ' size=' + Width + 'x' + Height + ' json=' + JsonString + ' offset=' + Offset + '\n')</l>
+<l>close_file (FileHandle)</l>
+<l>Ok := 1</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

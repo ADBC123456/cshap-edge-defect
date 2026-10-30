@@ -1,0 +1,11 @@
+file,index,type,is_main,area,contrast,edge_gap,pocket_area,hole_ratio,thickness,length,score
+H_curved.png,1,H,1,1395,147.1,85.6,0,0,4.5,130,205155
+H_curved_with_ghost.png,1,H,1,1382,145.7,85.6,0,0,4.5,130,201365
+H_straight.png,1,H,1,1631,149.7,61.5,0,0,4.5,175,244154
+K_ellipse_ring.png,1,K,1,1825,152.2,56.3,0,0.528,4.5,180,277709
+K_ring.png,1,K,1,2031,164.1,119.4,0,0.412,6,152,333283
+NONE_radial_line.png,1,W,1,2316,168.5,6.4,0,0,9.5,115,390297
+Q_single_contact_notch.png,1,W,1,2363,165.4,6.3,0,0,17.5,110,390911
+Q_two_contact_v.png,1,Q,1,2068,159,11.3,6390,0,5.5,169,328724
+W_blob_small_hole.png,1,W,1,3244,169.2,120.1,0,0.017,14,96,548877
+W_large_blob.png,1,W,1,7670,118.6,93.4,0,0.3,13.5,258,909853

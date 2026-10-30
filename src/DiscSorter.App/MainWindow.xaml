@@ -1,0 +1,109 @@
+<!--
+    主窗口：顶栏 + 左侧导航页签（监控 / 视觉调试 / 仓储管理 / 相机 / PLC 通讯 / 设置）。
+    每个页签里放一个页面（UserControl），页面的数据是 MainViewModel 里对应的属性。
+-->
+<Window x:Class="DiscSorter.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:DiscSorter.App.ViewModels"
+        xmlns:views="clr-namespace:DiscSorter.App.Views"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel, IsDesignTimeCreatable=True}"
+        Title="圆片缺陷识别与分类入库系统"
+        Width="1360"
+        Height="860"
+        MinWidth="1180"
+        MinHeight="720"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Microsoft YaHei UI"
+        FontSize="13"
+        Background="{StaticResource WindowBackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ==================== 顶栏 ==================== -->
+        <Border Grid.Row="0"
+                Background="{StaticResource HeaderBackgroundBrush}">
+            <Grid Margin="20,0">
+                <TextBlock Text="基于 HALCON 与 WPF 的圆片工件缺陷识别与分类入库系统"
+                           Foreground="{StaticResource HeaderTextBrush}"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                    <!-- 运行状态：有报警时变成红底 -->
+                    <Border Padding="10,3"
+                            CornerRadius="4"
+                            Margin="0,0,24,0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="#2F3B57"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding HasAlarm}" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource ErrorBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock Text="{Binding RunStateText}"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"/>
+                    </Border>
+
+                    <!-- 库位计数 -->
+                    <TextBlock Text="空闲 " Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Warehouse.EmptyCount}" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock Text="    执行中 " Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Warehouse.ReservedCount}" Foreground="#FBBF24" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock Text="    已占用 " Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Warehouse.OccupiedCount}" Foreground="#60A5FA" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock Text="    待确认 " Foreground="#CBD5E1" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Warehouse.NeedsCheckCount}" Foreground="#F87171" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ==================== 页面（左侧页签） ==================== -->
+        <!-- 页签外观在 Styles.xaml 的第 9 部分（NavTabItem） -->
+        <TabControl Grid.Row="1"
+                    TabStripPlacement="Left"
+                    BorderThickness="0"
+                    Padding="0"
+                    Background="{StaticResource WindowBackgroundBrush}"
+                    ItemContainerStyle="{StaticResource NavTabItem}">
+
+            <TabItem Header="监控">
+                <views:MonitorView DataContext="{Binding Monitor}"/>
+            </TabItem>
+
+            <TabItem Header="视觉调试">
+                <views:VisionView DataContext="{Binding Vision}"/>
+            </TabItem>
+
+            <TabItem Header="仓储管理">
+                <views:WarehouseView DataContext="{Binding Warehouse}"/>
+            </TabItem>
+
+            <TabItem Header="相机">
+                <views:CameraView DataContext="{Binding Camera}"/>
+            </TabItem>
+
+            <TabItem Header="PLC 通讯">
+                <views:PlcView DataContext="{Binding Plc}"/>
+            </TabItem>
+
+            <TabItem Header="设置">
+                <views:SettingsView DataContext="{Binding Settings}"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
