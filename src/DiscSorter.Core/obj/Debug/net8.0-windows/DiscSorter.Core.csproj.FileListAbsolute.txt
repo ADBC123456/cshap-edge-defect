@@ -28,3 +28,4 @@ E:\woker\cshap-edge-defect\src\DiscSorter.Core\obj\Debug\net8.0-windows\DiscSort
 E:\woker\cshap-edge-defect\src\DiscSorter.Core\obj\Debug\net8.0-windows\refint\DiscSorter.Core.dll
 E:\woker\cshap-edge-defect\src\DiscSorter.Core\obj\Debug\net8.0-windows\DiscSorter.Core.pdb
 E:\woker\cshap-edge-defect\src\DiscSorter.Core\obj\Debug\net8.0-windows\ref\DiscSorter.Core.dll
+E:\woker\cshap-edge-defect\src\DiscSorter.Core\obj\Debug\net8.0-windows\DiscSorter.Core.sourcelink.json

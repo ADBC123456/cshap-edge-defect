@@ -1,0 +1,482 @@
+P0000	[Normal]	
+P0001	[Normal]	
+P0002	[Normal]	
+P0003	[Normal]	
+P0004	[Normal]	
+P0005	[Normal]	本科生毕业设计
+P0006	[Normal]	
+P0007	[Normal]	
+P0008	[Normal]	中文题目
+P0009	[Normal]	外文题目（实词首字符大写）
+P0010	[Normal]	
+P0011	[Normal]	
+P0012	[Normal]	
+P0013	[Normal]	学    院    智能制造学院    
+P0014	[Normal]	专    业 电气工程与智能控制 
+P0015	[Normal]	班    级                    
+P0016	[Normal]	学    号                    
+P0017	[Normal]	姓    名                    
+P0018	[Normal]	指导教师                    
+P0019	[Normal]	职    称                    
+P0020	[Normal]	完成时间  2027年05月31日 
+P0021	[Normal]	
+P0022	[Normal]	
+P0023	[Normal]	
+P0024	[Normal]	
+P0025	[Normal]	天津中德应用技术大学
+P0026	[Normal]	本科生毕业设计
+P0027	[Normal]	
+P0028	[Normal]	
+P0029	[Normal]	
+P0030	[Normal]	
+P0031	[Normal]	中文题目
+P0032	[Normal]	外文题目（实词首字符大写）
+P0033	[Normal]	
+P0034	[Normal]	
+P0035	[Normal]	
+P0036	[Normal]	学    院    智能制造学院    
+P0037	[Normal]	专    业 电气工程与智能控制 
+P0038	[Normal]	班    级                    
+P0039	[Normal]	学    号                    
+P0040	[Normal]	姓    名                    
+P0041	[Normal]	指导教师                    
+P0042	[Normal]	职    称                    
+P0043	[Normal]	完成时间  2027年05月31日 
+P0044	[Normal]	
+P0045	[Normal]	天津中德应用技术大学
+P0046	[Normal]	本科生毕业设计（论文）的声明
+P0047	[Plain Text]	
+P0048	[Normal]	本人郑重声明：所呈交的毕业设计（论文），是本人在指导教师指导下，进行研究工作所取得的成果。除文中已经注明引用的内容外，本毕业设计（论文）的研究成果不包含任何他人创作的、已公开发表或没有公开发表的作品内容。对本设计（论文）所涉及的研究工作做出贡献的其他个人和集体，均已在文中以明确方式标明。本毕业设计（论文）原创性声明的法律责任由本人承担。
+P0049	[Plain Text]	
+P0050	[Plain Text]	毕业设计（论文）作者签名：               
+P0051	[Plain Text]	  年    月     日
+P0052	[Plain Text]	  
+P0053	[Plain Text]	
+P0054	[Plain Text]	
+P0055	[Normal]	本人声明：该毕业设计（论文）是本人指导学生完成的研究成果，已经审阅过设计（论文）的全部内容，并能够保证题目、关键词、摘要部分中英文内容的一致性和准确性。
+P0056	[Plain Text]	   
+P0057	[Plain Text]	毕业设计（论文）指导教师签名：              
+P0058	[Plain Text]	年    月     日
+P0059	[Plain Text]	摘    要
+P0060	[Normal]	摘要应具有独立性和自含性，即不需阅读毕业设计的全文，就能获得必要的信息，供读者确定有无必要阅读全文。摘要是一篇完整的短文，一般应说明研究工作目的、方法、结果和最终结论等，而重点是结果和结论。摘要要求结构严谨，表达简明，语义确切，字数在600字为左右。摘要中应排除本学科领域已成为常识的内容；不要把应在文献综述中出现的内容写入摘要；也不要对毕业设计内容作诠释和评论（尤其是自我评价）。
+P0061	[Normal]	用第三人称，不必使用“本文”、“作者”等作为主语。单位制一律换算成国际标准计量单位制，除了实在无法变通以外，一般不用数学公式和化学结构式，不得出现插图、表格。缩略语、简称、代号，除了相邻专业的读者也能清楚理解的以外，在首次出现时必须加以说明。
+P0062	[Normal]	
+P0063	[Normal]	关键词：毕业设计；撰写细则；行文格式
+P0064	[Normal]	
+P0065	[Normal]	
+P0066	[Normal]	ABSTRACT
+P0067	[Normal]	英文摘要另起一页，内容应与“中文摘要”对应。使用第三人称，用现在时态编写。字体为Times New Roman、小四号，首行缩进0字符、行间距20磅、段前10磅、段后0磅。
+P0068	[Normal]	
+P0069	[Normal]	Key Words: (与上文之间空一行，内容与中文关键词一致。词间用英文分号加空格间隔）
+P0070	[Normal]	目    录
+P0071	[toc 1]	
+P0072	[Normal]	
+P0073	[Normal]	
+P0074	[Heading 1]	第1章 毕业设计的结构
+P0075	[Normal]	毕业设计（论文）通常由题目、摘要、目录、正文、结论、参考文献、致谢、附录等几部分构成，要求统一采用计算机单面打印。
+P0076	[Normal]	在毕业设计（论文）系统中提交初稿、查重稿、终稿时，请从本模板中去除“附录”部分作为毕业设计正文上传，“附录”部分单独保存一个文件，作为“附件”上传。
+P0077	[Normal]	理工科专业及艺术类专业字数不少于8000字；人文社科专业字数不少于9000字。
+P0078	[Heading 2]	1.1 文前
+P0079	[Normal]	在毕业设计正文之前，一般应包含题目、摘要、目录。读者通过阅读题目、摘要、目录，就可以了解毕业设计全貌。
+P0080	[Normal]	1. 题目
+P0081	[Normal]	题目应该简短、明确，要有概括性。让人看后能大致了解文章的确切内容、专业特点和学科范畴。因此要明确、准确、精炼地直接概括描述所研究的主要内容和结果，题目字数要适当。如果有些细节必须放进题目里，为避免冗长，可以将细节放进副标题中。
+P0082	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0083	[Normal]	2. 摘要
+P0084	[Normal]	摘要在毕业设计的正文之前，用中英文撰写。摘要简要介绍毕业设计的研究目的、方法、结果和结论，语言力求精炼。中文摘要一般在600字左右。英文摘要内容应与中文摘要相对应。中英文摘要均要有关键词，一般为3—7个，各关键词之间要有分号。关键词的用语要规范。
+P0085	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0086	[Normal]	3. 目录
+P0087	[Normal]	显示标题级别最多3级并标明页号。注意目录内容应与正文中的标题相一致，页码相对应。
+P0088	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0089	[Heading 2]	1.2 正文
+P0090	[Normal]	正文的主体是对研究工作的详细表述，可以分章论述。其内容包括：研究工作的基本前提、假设和条件；模型的建立，实验方案的拟定；设计计算的主要方法和内容；实验方法、内容及其分析；理论论证在课题中的应用，课题得出的结果，以及对结果的讨论等。
+P0091	[Normal]	毕业设计中还应加入本研究的经济特性的分析，如投资效率、利润情况、对环境污染情况的讨论等。
+P0092	[Heading 3]	1.2.1 正文的组成
+P0093	[Normal]	毕业设计的正文是作者对自己的研究工作详细的表述。应包括绪论、理论分析、课题研究的方法与手段、结论与讨论等。
+P0094	[Normal]	1. 绪论部分
+P0095	[Normal]	简单介绍本毕业设计的研究领域；对本毕业设计研究主题范围内已有文献资料的评述；说明本毕业设计所要解决的问题及拟采用的研究手段和方法。
+P0096	[Normal]	2. 理论分析部分（或应用情况分析）
+P0097	[Normal]	详细说明本课题的理论依据，以及所使用的分析方法和计算方法等基本情况；指出哪些是已有的，哪些是经过改进之处，哪些是创新点。这一部分应以简练、明了的文字概略表述。
+P0098	[Normal]	3. 课题研究的方法与手段
+P0099	[Normal]	如用实验方法研究课题，应具体说明实验用的装置、仪器、原材料等，并应对所有装置、仪器、原材料做出检验和标定。对实验的过程和操作方法，力求叙述得简明扼要，对实验结果的记录、分析，对人所共知的或细节性的内容不必过分详述。
+P0100	[Normal]	如用理论推导的手段和方法达到研究目的，这方面内容要精心组织，做到概念准确，判断推理符合客观事物的发展规律，要做到言之有序，言之有理，以论点为中枢，组织成完整而严谨的内容整体。
+P0101	[Normal]	如用调查研究的方法达到研究目的，调查目标、对象、范围、时间、地点，过程和方法等内容的叙述要简练，对调查所提的样本、数据、新的发现等应详细说明，作为结论产生的依据。
+P0102	[Normal]	4. 结果与讨论部分
+P0103	[Normal]	应将必要而充分的数据、现象、样品、认识等作为分析的依据。在对结果做定性和定量分析时，应说明数据的处理方法以及误差分析，说明现象出现的条件，交代理论推导中认识的由来和发展，以使别人可以此为根据进行核实验证。对结果进行分析后所得到的结论和推论，也应说明其适用的条件和范围。
+P0104	[Normal]	结论主要反映个人的研究工作，包括对整个研究工作进行归纳和综合而得出的总结；要写所得结果与已有结果的比较；要联系实际结果，指出它的学术意义或应用价值和在实际中推广应用的可能性；要写本课题研究中尚存在的问题，对进一步开展研究的见解与建议等。结论一般要写得概括，篇幅要短，要简单、明确，在措辞上要严密，易被人领会。
+P0105	[Heading 3]	1.2.2 页面设置及格式
+P0106	[Normal]	纸型：A4（ISO）纸，单面打印。
+P0107	[Normal]	页边距：页边距为上2.8cm、下2.4cm、左2.5cm、右2.2cm。
+P0108	[Normal]	页眉：内容为“天津中德应用技术大学  20XX届本科生毕业设计”，从正文（第1章）第一页起始，到“致谢”部分。“附录”部分不再标注页眉。
+P0109	[Normal]	页脚：页码为阿拉伯数字，正文（第1章）起始页为1，到“致谢”部分结束。“附录”部分不再标注页脚。
+P0110	[Normal]	装订线：0cm，左侧装订。
+P0111	[Normal]	封面：采用我院统一格式。
+P0112	[Normal]	扉页：采用我院统一格式。
+P0113	[Normal]	参考文献：参考文献在文内的标注采用顺序编码制，对引用的文献，按它们在毕业设计中出现的先后用阿拉伯数字连续编码，将序号置于上标方括号内，如“……对此做了研究[3]”。注意只有文献第一次在文中出现时才编序号，即一篇文献只有一个序号，若某文献在文中被多次引用，在几个引用处都要标注同一个序号。若在正文的一处引用了多篇文献，标注时只用一个方括号，括号内列写这几篇文献的序号：若几个序号是连续的，只标注起、止序号，两序号之间加半字线“-”号；若几个序号不连续，各序号之间加逗号，如“[3-5，8]”表示在该处引用了3、4、5和8号文献。
+P0114	[Normal]	附录：“附录”用一级标题，内容的格式同正文。附录中的图表公式另编排序号，与正文分开。
+P0115	[Heading 3]	1.2.3 标题要求
+P0116	[Normal]	标题要重点突出，层次要清楚，简明扼要。章节编号方法采用分级阿拉伯数字编号方法，即“2.1”、“3.2.1”等，两级之间用下角圆点隔开，各层标题均单独占行书写，每一级的末尾不加标点。
+P0117	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0118	[Heading 2]	1.3 文后
+P0119	[Normal]	正文之后，还应该包含结论、参考文献、致谢以及附录，XXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXX。
+P0120	[Normal]	1. 结论
+P0121	[Normal]	结论是整篇毕业设计的归结，对全篇毕业设计起到画龙点睛的作用，必须单独书写。结论的内容不只是前面实验结果部分已经得出的研究结果的简单重复，而应该有进一步的认识。
+P0122	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0123	[Normal]	2. 参考文献
+P0124	[Normal]	参考文献只列出作者直接阅读过、在正文中被引用过的文献资料。参考文献一律放在毕业设计结束后，按文中引用的顺序一一列出。参考文献不能少于10个，外文文献不少于2个。本专业教材作为参考文献一般不能超过2部。优先选择近三年的参考文件，请尽量不要选择超过5年的参考文献。
+P0125	[Normal]	3. 致谢
+P0126	[Normal]	限一页，对帮助过自己的人表达谢意不仅是一种礼貌，更是对他人劳动的尊重，是治学者应有的思想作风。
+P0127	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0128	[Normal]	4. 附录
+P0129	[Normal]	附录不是必须的，内容一般包括正文内不便列出的冗长公式推导、辅助性数学工具、符号说明（含缩写）、计算程序及说明等，也可以是调研报告。附录的内容应有独立性、完整性，并应设置题目来概括附录的内容。多个附录要按顺序编号，在正文中提到有关内容时要注明参看附录。
+P0130	[Heading 2]	1.4 主要研究内容及章节安排
+P0131	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX，XXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXX。
+P0132	[Normal]	
+P0133	[Normal]	
+P0134	[Normal]	
+P0135	[Heading 1]	第2章 正文要求
+P0136	[Normal]	本科生毕业设计的正文是主体部分，要着重反映自己的工作，突出新的见解，例如新思想、新观点、新规律、新研究方法、新结果等。正文可以包括：调查对象、实验和观测方法、仪器设备、材料原料、实验和观测结果、计算方法和编程原理、数据资料、经过加工整理的图表、形成的论点和导出的结论等。
+P0137	[Normal]	正文要求论点正确，推理严谨，数据可靠，文字精练，条理分明，文字图表清晰整齐。利用别人研究成果必须附加说明。引用前人材料必须引证原著文字。在毕业设计的行文上，要注意语句通顺，达到科技毕业设计所必须具备的“正确、准确、明确”的要求。
+P0138	[Normal]	需要注意，正文中不要放置大段程序代码，可以将程序代码放置在附录中。正文中可以放置核心的图，其它图可以放置在附录中。
+P0139	[Heading 2]	2.1 语言表述
+P0140	[Normal]	由于研究工作涉及的学科、选题、研究方法、工作进程、结果表达方式等有很大的差异，不对正文内容作统一硬性的规定。但是，必须实事求是，合乎逻辑，层次分明。
+P0141	[Heading 3]	2.1.1 语言表述
+P0142	[Normal]	正文应层次分明、数据可靠、推理严谨、立论正确。论述必须简明扼要、重点突出，对同行专业人员已熟知的常识内容，尽量减少叙述。
+P0143	[Normal]	正文应采用普通话，用词准确，语法正确、符合逻辑，文句力求精炼简明、深入浅出、通顺易懂。避免采用口语俚语、生涩词语以及非学术、专业术语。
+P0144	[Normal]	正文中如出现一些非通用性的新名词、新术语或新概念，需立即做出解释。
+P0145	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0146	[Heading 3]	2.1.2 行文要求
+P0147	[Normal]	毕业设计（论文）一律使用打印文稿，不准加贴补写正文或图表或图片的纸条，或随意接长截短。
+P0148	[Normal]	行文要按照1986年国务院重新发表的汉子《简化字总表》正确使用简化字，不使用非正式简体字，如圆周不要写成“园周”，零件不要写成“另件”。
+P0149	[Normal]	标点符号应符合国家标准GB/T15834-1995《标点符号用法》的规定。不要一个句子长达几十个字甚至一二百字，中间一个标点符号也没有；也不要使用过多的标点符号而使句子过于零碎。
+P0150	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0151	[Heading 2]	2.2 图表和公式要求
+P0152	[Normal]	图、表、公式等与正文之间要有一行的间距；文中的图、表、公式一律采用阿拉伯数字分章编号。如：图2-5，表3-2，等。
+P0153	[Heading 3]	2.2.1 图格式要求
+P0154	[Normal]	插图须精心制作，线条清晰、美观，不得徒手画图，必须按国家规定标准或工程要求用计算机绘制。插图应与正文呼应，切忌与文字表述重复。不得插入与正文无关的图表或照片。插图应有图题，图序及图名居中置于图的下方，图中的术语、符号、单位等应同文字表述一致。插图一般为嵌入型居中排列。图中字体及大小根据实际情况自行调整。正文中应该包含对图的引用，例如“......如图2-1所示”。
+P0155	[Normal]	
+P0156	[Normal]	
+P0157	[Normal]	图2-1  跟随冷源对温度场的影响
+P0158	[Normal]	
+P0159	[Normal]	由于图、表放置造成的空行，或表格断开请调整文字的位置填充空行或使同一表格在页上显示；如表格太长一页容不下时，须将首行项目栏复制到后续页上（标题行重复）。
+P0160	[Heading 3]	2.2.2 表格式要求
+P0161	[Normal]	表中参数应标明量和单位的符号。表中字体及大小根据实际情况自行调整。表序号及表名称置于表的上方。
+P0162	[Normal]	表名称：正文中的表要有中文名称，表的中文名称为5号宋体字，不加粗，居中并位于表上；
+P0163	[Normal]	表尺寸：表尽量以一页的页面为限，一旦超限要加续表；
+P0164	[Normal]	表位置：表居中排列，表名与上文应留一行空格，表与下文留一空行；
+P0165	[Normal]	表格式：三线表，如表2-1所示。三线表的组成要素包括：表序、表题、项目栏、表体、表注。三线表通常只有3条线，即顶线、底线和栏目线。其中顶线和底线为粗线，栏目线为细线。如下表：
+P0166	[Normal]	
+P0167	[Normal]	表2-1  三线表
+P0168	[Normal]	注	1) 表中若有附注，一律用阿拉伯数字和右半圆括号按顺序编排，并写在表的下方；
+P0169	[Normal]	如有特殊要求可以使用竖线。
+P0170	[Normal]	
+P0171	[Normal]	当然，三线表并不一定只有3条线，必要时可加辅助线，但无论加多少条辅助线，仍称为三线表。如表2-2所示。
+P0172	[Normal]	
+P0173	[Normal]	表2-2  销售统计表
+P0174	[Normal (Web)]	
+P0175	[Normal (Web)]	
+P0176	[Normal (Web)]	
+P0177	[Normal (Web)]	
+P0178	[Normal (Web)]	
+P0179	[Normal (Web)]	
+P0180	[Normal]	
+P0181	[Heading 3]	2.2.3 公式
+P0182	[Normal]	公式：编号用括号括起写在右边行末，其间不加虚线。
+P0183	[Normal]	公式序号：分章编号，如(3-1)、(3-2)等。对其中字母代表意义的解释紧随其后。公式中的字符应调整到小四号字左右。如公式2-1所示：
+P0184	[Normal]	
+P0185	[Normal]	                                                (2-1)
+P0186	[Normal]	其中，b、c、d分别为矫正系数。
+P0187	[Normal]	
+P0188	[Normal]	公式位置：公式居左，并缩进2个汉字，公式上下分别要与正文间隔一空行，公式序号在公式所在行的最右边列出。一行写不完的长公式，最好在等号或运算符等数学符号前换行。
+P0189	[Normal]	将分数的分子分母平列在一行而用斜线分开时，应注意避免含义不清的情况，例如，a/bcosx会有（a/b）cosx和会有a/（bcosx）两种理解。公式中分数线的长短要写清楚，主要分数线要与等号对齐。
+P0190	[Heading 2]	2.3 规范表达注意事项
+P0191	[Normal]	毕业设计（论文）中的科学技术名词术语应使用全国自然科学名词审定委员会审定的自然科学名词术语和国家标准、部标准使用工程技术名词术语。尚未编定可采用公认共知的或惯用的名称。表示同一概念或物理量的名词术语，全文中要前后一致。不同物理量的符号应避免混淆。除很熟知的外国人名（如牛顿、爱因斯坦等）只需按通常译法写外，其余一般使用原文，不必译出。一般的机关、团体、学校、研究机构和企业等的名称应使用全称，不得简称，如不得把北京大学写成“北大”。使用外文缩写词，第一次出现时要在括号中给出全称并予以解释，如CPU（Central Processing Unit，中央处理器）。作者自拟的名词术语，在文中第一次出现时，须加注说明。
+P0192	[Heading 3]	2.3.1 外文字母
+P0193	[Normal]	外文字母一律使用印刷体。文中出现的易混淆的字母、符号以及上下标等，必须打印清楚或缮写工整。要严格区分外文字母的文种、大小写、正斜体和黑白体等，尤其注意上下标字母的大小写、正斜体以及位置的高低。
+P0194	[Normal]	1. 斜体
+P0195	[Normal]	斜体外文字母用于表示量的符号，主要用于下列场合：
+P0196	[Normal]	（1）变量符号、变动附标及函数。
+P0197	[Normal]	（2）用字母表示的数及代表点、线、面、体和图形的字母。
+P0198	[Normal]	（3）特征数符号，如Re(雷诺数)、Fo(傅里叶数)等。
+P0199	[Normal]	（4）在特定场合中视为常数的参数。
+P0200	[Normal]	（5）矢量、矩阵用黑体斜体。
+P0201	[Normal]	2. 正体
+P0202	[Normal]	正体外文字母用于表示名称及与其有关的代号，主要用于下列场合：
+P0203	[Normal]	（1）有定义的已知函数(例如sin，exp等)。
+P0204	[Normal]	（2）其值不变的数学常数(例如e=2.718…)及已定义的算子。
+P0205	[Normal]	（3）法定计量单位、词头和量纲符号。
+P0206	[Normal]	（4）化学元素符号。
+P0207	[Normal]	（5）机具、仪器、设备和产品等的型号、代号及材料牌号。
+P0208	[Normal]	（6）硬度符号。
+P0209	[Normal]	（7）不表示量的外文缩写字。
+P0210	[Normal]	（8）表示序号的拉丁字母。
+P0211	[Normal]	（9）量符号中为区别其它量而加的具有特定含义的非量符号下角标。
+P0212	[Heading 3]	2.3.2 数字
+P0213	[Normal]	毕业设计（论文）中的测量、统计等数字一律使用阿拉伯数字。一般叙述中不很大的数字，不宜用阿拉伯数字，如“三力作用于一点”、他发现两颗小行星。约数可用中文数字表示，也可用阿拉伯数字表示，如“约八百公里”、“约二十五万人”，也可写成“约800公里”、“约25万人”。分数可用中文数字表示，也可用阿拉伯数字表示，但两者表示方式不同，如“5/8”（不要写成8分之5）或“八分之五”。
+P0214	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0215	[Heading 3]	2.3.3 量和单位
+P0216	[Normal]	要严格执行GB3100—3102：93有关量和单位的规定（具体要求请参阅《常用量和单位》.计量出版社，1996）；
+P0217	[Normal]	单位名称的书写，可以采用国际通用符号，也可以用中文名称，但全文应统一，不要两种混用。单位写在全部数值之后，如38.25m，或38.25米。非物理量的单位，如件、台、人、元等，可用汉字与符号构成组合形式的单位，如：件/台·h、元/km。在文中不要用物理量符号、计量单位符号和数学符号代替相应名称。例如：“钢轨每米质量”不要写成“钢轨每m质量”，“加15mol的硫酸”不要写成“+15mol的H2SO4”，“绕线电阻小于1Ω”不要写成“绕线电阻＜1Ω”。
+P0218	[Heading 2]	2.4 装订存档注意事项
+P0219	[Plain Text]	毕业设计文本单独成册，包括封面、扉页、毕业设计全部内容、封底等。毕业设计与毕业设计过程中的全部资料要装入档案袋。
+P0220	[Heading 3]	2.4.1 毕业设计装订
+P0221	[Plain Text]	毕业设计单独成册，装订的内容依次为：封面、扉页、选题申报表（复印件）、任务书（复印件）、开题报告（复印件）、本科生毕业设计（论文）声明（原件）、中文摘要及关键词、英文摘要及关键词、目录、毕业设计正文、结论、参考文献、致谢、附录、封底。
+P0222	[Plain Text]	毕业设计封面、封底的纸张材质、颜色由学院统一规定。对于校级优秀毕业设计，学生需要提交给学院两本毕业设计用于存档，其它同学提交1本毕业设计给学院存档即可。
+P0223	[Heading 3]	2.4.2 毕业设计存档
+P0224	[Normal]	毕业设计的档案材料需要装入学院统一提供的档案袋，存档资料包括：选题申报表、任务书、开题报告、中期检查表、教师指导过程记录表、指导教师评分表、评阅教师评分表、答辩记录表、成绩评定表、毕业设计（论文）已装订好的文本以及其他图纸、作品等。以上资料均为原件（不能提供复印件），签字、审核、盖章完整，无缺项。
+P0225	[Normal]	档案袋的装袋人是指导教师（或由指导教师委托他人协助完成），装袋后手写签名确认。审核人为答辩小组的答辩秘书，审核后手写签名确认。接下来由系（教研室）主任审核盖章（或签字），最后由学院审核盖章。
+P0226	[Normal]	档案袋正面的学号、姓名、指导教师均需手写填写。如果有两位指导教师，则两位指导教师姓名中间使用空格分隔。
+P0227	[Heading 2]	2.5 本章小结
+P0228	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0229	[Normal]	
+P0230	[Heading 1]	第3章 XXXXXXXXXXXX
+P0231	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0232	[Heading 2]	3.X 本章小结
+P0233	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0234	[Normal]	
+P0235	[Heading 1]	第4章 XXXXXXXXXXXX
+P0236	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0237	[Heading 2]	4.X 本章小结
+P0238	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0239	[Normal]	
+P0240	[Heading 1]	第5章 XXXXXXXXXXXX
+P0241	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0242	[Heading 2]	5.X 本章小结
+P0243	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0244	[Normal]	
+P0245	[Heading 1]	第X章 结论与展望
+P0246	[Normal]	结论是理论分析和实验结果的逻辑发展，是整篇毕业设计的归宿。结论是在理论分析、试验结果的基础上，经过分析、推理、判断、归纳的过程而形成的总观点。结论的措词必须严谨，逻辑性必须严密，文字必须鲜明具体。如果不可能导出应用的结论，也可以没有结论，但需进行必要的讨论。
+P0247	[Normal]	可以在结论或讨论中提出建议、研究设想、仪器设备改进意见、尚待解决的问题等，形成展望。
+P0248	[Heading 2]	X.1 结论
+P0249	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0250	[Heading 2]	X.2 展望
+P0251	[Normal]	XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。
+P0252	[Normal]	
+P0253	[Heading 1]	参考文献
+P0254	[Normal]	（参考文献按在文中引用顺序排序，作者如超过两位时只列前两位，其他人用“等”、英文作者用“et al”表示）
+P0255	[Normal]	专著（[序号] 作者. 专著名[M]. 出版地: 出版社, 出版年: 起止页码.）
+P0256	[Normal]	[1] 薛华成. 管理信息系统[M]. 北京: 清华大学出版社, 2026: 23-27.
+P0257	[Normal]	期刊类（[序号] 作者. 题(篇)名[J]. 刊名. 出版年, 卷号 (或期号): 起止页码.）
+P0258	[Normal]	[2] 徐滨士, 欧忠文等. 纳米表面工程[J]. 中国机械工程, 2025, 11 (6): 707-712.
+P0259	[Normal]	[3] Kuehnlw M R, Peeken H, et al. The Toroidal Drive[J]. Mechanical Engineering, 2024, 103 (2):32-39.
+P0260	[Normal]	论文集（[序号] 作者. 篇名[C]. 出版地: 出版者, 出版年: 起止页码.）
+P0261	[Normal]	[4] 伍鑫甫. 西方文论选[C]. 上海: 上海译文出版社, 2026: 12-17.
+P0262	[Normal]	学位论文类（[序号] 作者. 题 (篇)名[D]. 授学位地: 授学位单位, 授学位年.）
+P0263	[Normal]	[5] 金波. 采用并联型液压系统的水轮机调速器控制系统研究[D]. 杭州: 浙江大学, 2024.
+P0264	[Normal]	专利文献类（[序号] 专利申请者. 专利题名[P]. 专利国别: 专利号. 出版日期.）
+P0265	[Normal]	[6] 姜锡洲. 一种温热外敷药制备方案[P]. 中国专利: 881056078. 2023-08-12.
+P0266	[Normal]	国际、国家标准类（[序号] 标准代号, 标准名称[S]. 出版地: 出版者, 出版年.）
+P0267	[Normal]	[7] GB/T 16159—1996, 汉语拼音正词法基本规则[S]. 北京: 中国标准出版社, 2025.
+P0268	[Normal]	报纸文章类（[序号] 作者. 文献题名[N]. 报纸名, 出版日期 (版次).）
+P0269	[Normal]	[8] 谢希德. 创造学习的思路[N]. 人民日报, 2024-12-25 (10).
+P0270	[Normal]	研究报告（[序号]作者. 篇名[R]. 出版地: 出版者, 出版年份: 起始页码.）
+P0271	[Normal]	[9] 冯乔西. 核反应堆艳丽管道与压力容器的LBB分析[R]. 北京: 清华大学核能技术设计研究院, 2025: 9-10.
+P0272	[Normal]	条例（[序号] 颁布单位. 条例名称. 发布日期.）
+P0273	[Normal]	[10] 中华人民共和国科学技术委员会. 科学技术期刊管理办法[Z]. 2024-06-05.
+P0274	[Normal]	****建议：本专业教材作为参考文献一般不能超过2部。
+P0275	[Normal]	****建议：优先选择近三年的参考文件，请尽量不要选择超过5年的参考文献。
+P0276	[Normal]	****说明：在文中按顺序引用标注参考文献。每篇毕业设计主要参考文献数量应在10篇以上，其中外文参考文献2篇以上。指导教师认定为特殊类型的设计（论文），可以不列外文参考文献。
+P0277	[Normal]	
+P0278	[Heading 1]	致    谢
+P0279	[Normal]	用简短文字对在本研究工作中提出建议和给予帮助的人员，如老师和同学以及其他人，应在毕业设计中做明确的说明并表示谢意。对导师的致谢要实事求是、诚恳、真挚，切忌滥用浮夸庸俗之词。
+P0280	[Normal]	
+P0281	[Normal]	
+P0282	[Heading 1]	附    录
+P0283	[Normal]	附录1：自动化专业毕业设计（论文）撰写规范
+P0284	[Normal]	毕业设计（论文）应有一定的范式结构，例如：绪论（概述）、系统总体介绍、硬件设计、软件设计、系统测试、总结与展望等部分。
+P0285	[Normal]	1. 绪论
+P0286	[Normal]	绪论部分需介绍研究背景、研究的目的及意义等，对课题的研究前提、国内外研究情况、本课题研究内容等做出总览性的介绍和说明。
+P0287	[Normal]	2. 系统总体介绍
+P0288	[Normal]	（1）文字部分要求：需包括系统整体的说明、设计方案的论证等内容，对设计内容、关键知识点等做出明确说明，可对必要的知识点做出名词解释；
+P0289	[Normal]	（2）配图部分要求：系统总体介绍部分需具备总的框架图、网络架构图等。
+P0290	[Normal]	3. 硬件设计部分
+P0291	[Normal]	（1）文字部分要求：需有硬件设计的总体介绍，并按不同单元、环节、电路等进行分节（三级标题）说明； 
+P0292	[Normal]	（2）配图部分要求：硬件部分需具备一定的配图支撑。如安装布局图、接线图、开孔图、3D模型图、硬件原理图、硬件实物图、PCB板图等。
+P0293	[Normal]	4. 软件设计部分
+P0294	[Normal]	（1）文字部分要求：需具备软件设计的总体介绍，并按不同作用和功能分节（三级标题）进行说明，可适当加入关键程序、代码、公式等；
+P0295	[Normal]	（2）配图部分要求：需配有软件设计总流程图，且每部分均配有相应功能流程图。
+P0296	[Normal]	毕业设计（论文）所涉及的所有图片均需用word绘图板、Visio、AutoCAD或相应的技术类软件自行设计绘制，保证贴图的清晰度。不可使用网络上获取的现成图片、手绘拍照等方式。背景颜色为白色或无背景颜色。
+P0297	[Normal]	毕业设计（论文）中所有配图、配表均须有相应的文字说明作支撑，并在原文中有“如图1.1所示”，“如表2.3所列”之类与之对应的文字。
+P0298	[Normal]	有设计作品的毕业设计（论文），需具备总的工作原理图、安装布局图、接线图、源代码等，作为毕业设计附录出现。在正文中对其中的每部分作介绍时，相应的配图可从总图中截取。
+P0299	[Normal]	有设计作品的毕业设计（论文），可在毕业设计中提供实物照片、安装调试过程照片等照片内容。避免颜色过深或内容复杂，影响打印效果。
+P0300	[Normal]	
+P0301	[Normal]	附录2：电气系统图
+P0302	[Normal]	
+P0303	[Normal]	附录3：液位PID控制
+P0304	[Normal]	
+P0305	[Normal]	
+P0306	[Normal]	附录4：源程序
+P0307	[Normal]	#include<reg52.h>
+P0308	[Normal]	#include<intrins.h>
+P0309	[Normal]	
+P0310	[Normal]	unsigned char data1;
+P0311	[Normal]	long Value;
+P0312	[Normal]	
+P0313	[Normal]	#define LCD1602_DB  P0
+P0314	[Normal]	sbit LCD1602_RS = P1^0;
+P0315	[Normal]	sbit LCD1602_RW = P1^1;
+P0316	[Normal]	sbit LCD1602_E  = P1^2;
+P0317	[Normal]	sbit bADcs=P2^7;   				
+P0318	[Normal]	sbit bADcl=P2^6;
+P0319	[Normal]	sbit bADda=P2^5;
+P0320	[Normal]	
+P0321	[Normal]	
+P0322	[Normal]	unsigned char IntToString(unsigned char *str, int dat);
+P0323	[Normal]	extern void InitLcd1602();
+P0324	[Normal]	extern void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str);
+P0325	[Normal]	
+P0326	[Normal]	/* 等待液晶准备好 */
+P0327	[Normal]	void LcdWaitReady()
+P0328	[Normal]	{
+P0329	[Normal]	    unsigned char sta;
+P0330	[Normal]	    
+P0331	[Normal]	    LCD1602_DB = 0xFF;
+P0332	[Normal]	    LCD1602_RS = 0;
+P0333	[Normal]	    LCD1602_RW = 1;
+P0334	[Normal]	    do {
+P0335	[Normal]	        LCD1602_E = 1;
+P0336	[Normal]	        sta = LCD1602_DB; //读取状态字
+P0337	[Normal]	        LCD1602_E = 0;
+P0338	[Normal]	    } while (sta & 0x80); //bit7等于1表示液晶正忙，重复检测直到其等于0为止
+P0339	[Normal]	}
+P0340	[Normal]	/* 向LCD1602液晶写入一字节命令，cmd-待写入命令值 */
+P0341	[Normal]	void LcdWriteCmd(unsigned char cmd)
+P0342	[Normal]	{
+P0343	[Normal]	    LcdWaitReady();
+P0344	[Normal]	    LCD1602_RS = 0;
+P0345	[Normal]	    LCD1602_RW = 0;
+P0346	[Normal]	    LCD1602_DB = cmd;
+P0347	[Normal]	    LCD1602_E  = 1;
+P0348	[Normal]	    LCD1602_E  = 0;
+P0349	[Normal]	}
+P0350	[Normal]	/* 向LCD1602液晶写入一字节数据，dat-待写入数据值 */
+P0351	[Normal]	void LcdWriteDat(unsigned char dat)
+P0352	[Normal]	{
+P0353	[Normal]	    LcdWaitReady();
+P0354	[Normal]	    LCD1602_RS = 1;
+P0355	[Normal]	    LCD1602_RW = 0;
+P0356	[Normal]	    LCD1602_DB = dat;
+P0357	[Normal]	    LCD1602_E  = 1;
+P0358	[Normal]	    LCD1602_E  = 0;
+P0359	[Normal]	}
+P0360	[Normal]	/* 设置显示RAM起始地址，亦即光标位置，(x,y)-对应屏幕上的字符坐标 */
+P0361	[Normal]	void LcdSetCursor(unsigned char x, unsigned char y)
+P0362	[Normal]	{
+P0363	[Normal]	    unsigned char addr;
+P0364	[Normal]	    
+P0365	[Normal]	    if (y == 0)  //由输入的屏幕坐标计算显示RAM的地址
+P0366	[Normal]	        addr = 0x00 + x;  //第一行字符地址从0x00起始
+P0367	[Normal]	    else
+P0368	[Normal]	        addr = 0x40 + x;  //第二行字符地址从0x40起始
+P0369	[Normal]	    LcdWriteCmd(addr | 0x80);  //设置RAM地址
+P0370	[Normal]	}
+P0371	[Normal]	/* 在液晶上显示字符串，(x,y)-对应屏幕上的起始坐标，str-字符串指针 */
+P0372	[Normal]	void LcdShowStr(unsigned char x, unsigned char y, unsigned char *str)
+P0373	[Normal]	{
+P0374	[Normal]	    LcdSetCursor(x, y);   //设置起始地址
+P0375	[Normal]	    while (*str != '\0')  //连续写入字符串数据，直到检测到结束符
+P0376	[Normal]	    {
+P0377	[Normal]	        LcdWriteDat(*str++);
+P0378	[Normal]	    }
+P0379	[Normal]	}
+P0380	[Normal]	/* 初始化1602液晶 */
+P0381	[Normal]	void InitLcd1602()
+P0382	[Normal]	{
+P0383	[Normal]	    LcdWriteCmd(0x38);  //16*2显示，5*7点阵，8位数据接口
+P0384	[Normal]	    LcdWriteCmd(0x0C);  //显示器开，光标关闭
+P0385	[Normal]	    LcdWriteCmd(0x06);  //文字不动，地址自动+1
+P0386	[Normal]	    LcdWriteCmd(0x01);  //清屏
+P0387	[Normal]	}
+P0388	[Normal]	void Delay_Ms (unsigned int a)
+P0389	[Normal]	{
+P0390	[Normal]		unsigned int i;
+P0391	[Normal]		while( a-- != 0)
+P0392	[Normal]		{
+P0393	[Normal]			for(i = 0; i < 600; i++);
+P0394	[Normal]		}
+P0395	[Normal]	} 
+P0396	[Normal]	long kssj()   //开始收集
+P0397	[Normal]	 {
+P0398	[Normal]	   unsigned char i;
+P0399	[Normal]	
+P0400	[Normal]	     bADcs = 0;//当ADC0832未工作时其CS输入端应为高电平，此时芯片禁用.
+P0401	[Normal]		 bADcl=0;
+P0402	[Normal]		 bADda=1;
+P0403	[Normal]		 bADcl=1;
+P0404	[Normal]		 bADcl=0;//i down
+P0405	[Normal]		 bADda=1;
+P0406	[Normal]		 bADcl=1;
+P0407	[Normal]		 bADcl=0;	//   2 down
+P0408	[Normal]		 bADda=0;
+P0409	[Normal]		 bADcl=1;
+P0410	[Normal]		 bADcl=0;	//   3 down
+P0411	[Normal]		 bADda=1;
+P0412	[Normal]		 bADcl=1;
+P0413	[Normal]		 bADcl=0;	//   4 down
+P0414	[Normal]	
+P0415	[Normal]		 for(i=8;i>0;i--)
+P0416	[Normal]		 	{
+P0417	[Normal]			
+P0418	[Normal]		 	data1<<=1;
+P0419	[Normal]		 	bADcl=0;
+P0420	[Normal]			bADcl=1;
+P0421	[Normal]			if(bADda==1) data1|=0x01;
+P0422	[Normal]			   	bADda=1;
+P0423	[Normal]		 	}
+P0424	[Normal]			 bADcs=1;
+P0425	[Normal]		 	
+P0426	[Normal]	       Value=500-data1*1.96;
+P0427	[Normal]		 
+P0428	[Normal]		   if(Value<0)Value=0;
+P0429	[Normal]		   return Value;
+P0430	[Normal]	 }
+P0431	[Normal]	
+P0432	[Normal]	void main()
+P0433	[Normal]	{
+P0434	[Normal]	  unsigned char len_w;
+P0435	[Normal]	  unsigned char str_yw[12];//光照强度
+P0436	[Normal]	  InitLcd1602();     //初始化液晶
+P0437	[Normal]	  LcdShowStr(0, 1,"Light:");	//单位勒克斯（lux或lx）
+P0438	[Normal]	 // LcdShowStr(0, 1,"Set:300Lx");	//单位勒克斯（lux或lx）
+P0439	[Normal]	  while(1)
+P0440	[Normal]	 {
+P0441	[Normal]	    Delay_Ms(100);
+P0442	[Normal]	    kssj();  //开始检测光照强度
+P0443	[Normal]		        str_yw[0] = Value/100+0x30;
+P0444	[Normal]	            str_yw[1] = Value%100/10+0x30;
+P0445	[Normal]	            str_yw[2] = Value%10+0x30;
+P0446	[Normal]			    str_yw[3] = 'L';
+P0447	[Normal]	            str_yw[4] = 'x';
+P0448	[Normal]				str_yw[5] = '\0';
+P0449	[Normal]	
+P0450	[Normal]	            LcdShowStr(6, 1,str_yw);
+P0451	[Normal]	
+P0452	[Normal]	 }
+P0453	[Normal]	}
+P0454	[Normal]	/* 整型数转换为字符串，str-字符串指针，dat-待转换数，返回值-字符串长度 */
+P0455	[Normal]	unsigned char IntToString(unsigned char *str, int dat)
+P0456	[Normal]	{
+P0457	[Normal]	    signed char i = 0;
+P0458	[Normal]	    unsigned char len = 0;
+P0459	[Normal]	    unsigned char buf[6];
+P0460	[Normal]	    
+P0461	[Normal]	    if (dat < 0)  //如果为负数，首先
+P0462	[Normal]		
+P0463	[Normal]	    {
+P0464	[Normal]	        dat = -dat;
+P0465	[Normal]	        *str++ = '-';
+P0466	[Normal]	        len++;
+P0467	[Normal]	    }
+P0468	[Normal]	    do {          //先转换为低位在前的十进制数组
+P0469	[Normal]	        buf[i++] = dat % 10;
+P0470	[Normal]	        dat /= 10;
+P0471	[Normal]	    } while (dat > 0);
+P0472	[Normal]	    len += i;     //i最后的值就是有效字符的个数
+P0473	[Normal]	    while (i-- > 0)   //将数组值转换为ASCII码反向拷贝到接收指针上
+P0474	[Normal]	    {
+P0475	[Normal]	        *str++ = buf[i] + '0';
+P0476	[Normal]	    }
+P0477	[Normal]	
+P0478	[Normal]	    *str = '\0';  //添加字符串结束符
+P0479	[Normal]	    
+P0480	[Normal]	    return len;   //返回字符串长度
+P0481	[Normal]	}

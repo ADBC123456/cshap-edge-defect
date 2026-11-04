@@ -16,5 +16,5 @@ E:\woker\cshap-edge-defect\src\DiscSorter.App\App.xaml
 229159739577
 Controls\DetectionViewer.xaml;Controls\SlotCard.xaml;Controls\SlotCell.xaml;MainWindow.xaml;Styles\Styles.xaml;Views\CameraView.xaml;Views\MonitorView.xaml;Views\PlcView.xaml;Views\SettingsView.xaml;Views\VisionView.xaml;Views\WarehouseView.xaml;
 
-True
+False
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DiscSorter.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6e2412fc006a538ac9b9d71510d1733788af0d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("DiscSorter.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DiscSorter.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

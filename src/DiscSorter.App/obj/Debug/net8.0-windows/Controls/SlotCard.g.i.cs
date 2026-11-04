@@ -54,7 +54,7 @@ namespace DiscSorter.App.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/DiscSorter.App;V1.0.0.0;component/controls/slotcard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/DiscSorter.App;component/controls/slotcard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\SlotCard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,0 +1,224 @@
+{
+  "file": "E:\\woker\\cshap-edge-defect\\论文文档\\论文skill\\_qa\\bad_sample.txt",
+  "notice": "仅提示语言与格式风险，不评估AI率，不核查事实真伪；所有命中需结合语境复核。",
+  "metrics": {
+    "visible_characters": 232,
+    "paragraphs": 3,
+    "sentences": 6,
+    "paragraph_length_median": 84,
+    "sentence_length_median": 31.0,
+    "sentence_length_p90": 62.5
+  },
+  "thresholds": {
+    "long_sentence": 100,
+    "long_paragraph": 320
+  },
+  "issue_counts_by_severity": {
+    "error": 2,
+    "warning": 11,
+    "info": 10
+  },
+  "rule_findings": [
+    {
+      "rule_id": "editing-residue",
+      "severity": "error",
+      "message": "疑似编辑指令或工作过程残留",
+      "suggestion": "删除写作过程说明，只保留论文正文。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "第二步进行改写：系统开展数据采集工作，并且进行零点校准操作以及量程转换处理，以此保证数据稳定，进而实现精准控制，从而提"
+        }
+      ]
+    },
+    {
+      "rule_id": "placeholders",
+      "severity": "error",
+      "message": "存在未完成的占位内容",
+      "suggestion": "用真实材料替换；无法确认时保留在待补清单，不进入提交稿。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 3,
+          "excerpt": "XXXXXXXXXXXXXXXXXXXXXXXX。这套设备性价比很高，具有广阔的应用前景，未来将打造新一代全智能装备。"
+        }
+      ]
+    },
+    {
+      "rule_id": "first-person",
+      "severity": "warning",
+      "message": "正文出现口语化或第一人称指称",
+      "suggestion": "优先改用系统、模块、控制器等工程实体作主语；致谢不受此限。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 1,
+          "excerpt": "当今智能制造时代，传统设备已经无法满足生产需要。我们这套系统针对行业痛点，配上先进传感器和PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，"
+        }
+      ]
+    },
+    {
+      "rule_id": "colloquial",
+      "severity": "warning",
+      "message": "出现口语或聊天式表达",
+      "suggestion": "改为准确、直接的技术动词和中性名词，不要只换成更华丽的词。",
+      "count": 4,
+      "examples": [
+        {
+          "paragraph": 1,
+          "excerpt": "统设备已经无法满足生产需要。我们这套系统针对行业痛点，配上先进传感器和PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实"
+        },
+        {
+          "paragraph": 1,
+          "excerpt": "已经无法满足生产需要。我们这套系统针对行业痛点，配上先进传感器和PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实的基础"
+        },
+        {
+          "paragraph": 1,
+          "excerpt": "我们这套系统针对行业痛点，配上先进传感器和PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实的基础。"
+        },
+        {
+          "paragraph": 1,
+          "excerpt": "统针对行业痛点，配上先进传感器和PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实的基础。"
+        }
+      ]
+    },
+    {
+      "rule_id": "ai-cliche",
+      "severity": "info",
+      "message": "出现泛化背景或模板化评价",
+      "suggestion": "若该句不增加技术信息则删除；否则改成具体对象、机制或证据。",
+      "count": 5,
+      "examples": [
+        {
+          "paragraph": 1,
+          "excerpt": "随着科技飞速发展，在当今智能制造时代，传统设备已经无法满足生产需要。我们这套系统针对行业痛点，配上先进传感器和PLC搭了"
+        },
+        {
+          "paragraph": 1,
+          "excerpt": "随着科技飞速发展，在当今智能制造时代，传统设备已经无法满足生产需要。我们这套系统针对行业痛点，配上先进传感器和PLC搭了起来，用起来很方便，"
+        },
+        {
+          "paragraph": 1,
+          "excerpt": "，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实的基础。"
+        },
+        {
+          "paragraph": 3,
+          "excerpt": "XXXXXXXXXXX。这套设备性价比很高，具有广阔的应用前景，未来将打造新一代全智能装备。"
+        }
+      ]
+    },
+    {
+      "rule_id": "unsupported-strong-claim",
+      "severity": "warning",
+      "message": "强评价或绝对化表述需要证据与边界",
+      "suggestion": "补充指标、数值、工况、样本和来源；证据不足时改为设计目的或限定结论。",
+      "count": 3,
+      "examples": [
+        {
+          "paragraph": 1,
+          "excerpt": "上先进传感器和PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实的基础。"
+        },
+        {
+          "paragraph": 1,
+          "excerpt": "PLC搭了起来，用起来很方便，能够显著提高效率，完全满足各种工况，为后续发展奠定了坚实的基础。"
+        },
+        {
+          "paragraph": 3,
+          "excerpt": "性价比很高，具有广阔的应用前景，未来将打造新一代全智能装备。"
+        }
+      ]
+    },
+    {
+      "rule_id": "vague-performance-claim",
+      "severity": "info",
+      "message": "性能评价较为笼统",
+      "suggestion": "写明控制对象、评价指标、测试条件和判定阈值，避免用模糊词代替证据。",
+      "count": 2,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "操作以及量程转换处理，以此保证数据稳定，进而实现精准控制，从而提高系统的智能化水平。传感器输出为0-10v，具体结构见图2.1所示。"
+        },
+        {
+          "paragraph": 3,
+          "excerpt": "XXXXXXXXXXXXXXXXXXX。这套设备性价比很高，具有广阔的应用前景，未来将打造新一代全智能装备。"
+        }
+      ]
+    },
+    {
+      "rule_id": "nominalization",
+      "severity": "info",
+      "message": "可能存在名词化或翻译腔",
+      "suggestion": "能用直接动词时改为“采集数据、校准零点、验证干涉”等表达。",
+      "count": 2,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "第二步进行改写：系统开展数据采集工作，并且进行零点校准操作以及量程转换处理，以此保证数据稳定，进而实现精准控制，从而提高系统的智能化水平。传"
+        },
+        {
+          "paragraph": 2,
+          "excerpt": "第二步进行改写：系统开展数据采集工作，并且进行零点校准操作以及量程转换处理，以此保证数据稳定，进而实现精准控制，从而提高系统的智能化水平。传感器输出为0-10v，具体结构见图2."
+        }
+      ]
+    },
+    {
+      "rule_id": "connector-chain",
+      "severity": "info",
+      "message": "一句中衔接词可能堆叠",
+      "suggestion": "检查是否能拆成两句，并只保留真实的逻辑连接。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "采集工作，并且进行零点校准操作以及量程转换处理，以此保证数据稳定，进而实现精准控制，从而提高系统的智能化水平。传感器输出为0-10v，具体结构见图2.1所示。"
+        }
+      ]
+    },
+    {
+      "rule_id": "figure-reference-syntax",
+      "severity": "warning",
+      "message": "图表引用句式不规范",
+      "suggestion": "使用“如图2-1所示”或“见表2-1”，避免“见图……所示”和“表格”。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "统的智能化水平。传感器输出为0-10v，具体结构见图2.1所示。"
+        }
+      ]
+    },
+    {
+      "rule_id": "figure-number-dot",
+      "severity": "warning",
+      "message": "图表编号使用点号，可能与2027届模板不一致",
+      "suggestion": "按模板改为分章短横线编号，如“图2-1”“表2-1”。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "的智能化水平。传感器输出为0-10v，具体结构见图2.1所示。"
+        }
+      ]
+    },
+    {
+      "rule_id": "unit-case",
+      "severity": "warning",
+      "message": "单位符号大小写可能有误",
+      "suggestion": "核对SI单位写法，如V、kV、kW、kPa、MPa，并保持全文统一。",
+      "count": 1,
+      "examples": [
+        {
+          "paragraph": 2,
+          "excerpt": "制，从而提高系统的智能化水平。传感器输出为0-10v，具体结构见图2.1所示。"
+        }
+      ]
+    }
+  ],
+  "long_sentences": [],
+  "long_sentences_total": 0,
+  "long_paragraphs": [],
+  "long_paragraphs_total": 0,
+  "repeated_sentence_openers": []
+}

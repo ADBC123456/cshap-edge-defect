@@ -1,0 +1,25 @@
+{
+  "file": "E:\\woker\\cshap-edge-defect\\论文文档\\论文skill\\_qa\\good_sample.txt",
+  "notice": "仅提示语言与格式风险，不评估AI率，不核查事实真伪；所有命中需结合语境复核。",
+  "metrics": {
+    "visible_characters": 220,
+    "paragraphs": 2,
+    "sentences": 7,
+    "paragraph_length_median": 110.0,
+    "sentence_length_median": 32,
+    "sentence_length_p90": 42.0
+  },
+  "thresholds": {
+    "long_sentence": 100,
+    "long_paragraph": 320
+  },
+  "issue_counts_by_severity": {
+    "warning": 0
+  },
+  "rule_findings": [],
+  "long_sentences": [],
+  "long_sentences_total": 0,
+  "long_paragraphs": [],
+  "long_paragraphs_total": 0,
+  "repeated_sentence_openers": []
+}

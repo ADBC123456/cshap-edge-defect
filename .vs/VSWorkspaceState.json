@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\halcon",
+    "\\src",
+    "\\src\\DiscSorter.App",
+    "\\src\\DiscSorter.App\\ViewModels"
+  ],
+  "SelectedNode": "\\src\\DiscSorter.App\\ViewModels\\MainViewModel.cs",
+  "PreviewInSolutionExplorer": false
+}

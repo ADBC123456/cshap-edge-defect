@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "required_files": 9,
+  "referenced_paths_checked": 7,
+  "bad_sample_rules_triggered": [
+    "ai-cliche",
+    "colloquial",
+    "connector-chain",
+    "editing-residue",
+    "figure-number-dot",
+    "figure-reference-syntax",
+    "first-person",
+    "nominalization",
+    "placeholders",
+    "unit-case",
+    "unsupported-strong-claim",
+    "vague-performance-claim"
+  ],
+  "good_sample_findings": 0,
+  "single_newline_paragraphs": 2,
+  "chinese_adjacent_unit_detected": true,
+  "citation_placeholders_detected": [
+    "XXX",
+    "【引用编号】",
+    "[引用]"
+  ],
+  "singular_first_person_detected": true,
+  "long_sentence_detection": 1,
+  "repeated_opener_detection": [
+    {
+      "opener": "通过",
+      "count": 4,
+      "ratio": 1.0
+    }
+  ],
+  "docx_paragraphs_read": 2,
+  "docx_rules_triggered": [
+    "colloquial",
+    "first-person",
+    "unsupported-strong-claim"
+  ]
+}

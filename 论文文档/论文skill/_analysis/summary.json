@@ -1,0 +1,221 @@
+{
+  "pdfs": {
+    "撰写规范-电气工程与智能控制专业-2026版.pdf": {
+      "pages": 2,
+      "nonempty_pages": 2,
+      "characters": 1384,
+      "output": "_analysis\\撰写规范-电气工程与智能控制专业-2026版.txt"
+    },
+    "毕业设计：张天良.pdf": {
+      "pages": 44,
+      "nonempty_pages": 44,
+      "characters": 39147,
+      "output": "_analysis\\毕业设计：张天良.txt"
+    },
+    "毕业设计：赵洪斌.pdf": {
+      "pages": 69,
+      "nonempty_pages": 69,
+      "characters": 59923,
+      "output": "_analysis\\毕业设计：赵洪斌.txt"
+    }
+  },
+  "docx": {
+    "11-毕业设计模版（2027届）.docx": {
+      "paragraphs": 482,
+      "tables": 2,
+      "sections": [
+        {
+          "page_width_mm": 210.01,
+          "page_height_mm": 297.0,
+          "top_margin_mm": 30.0,
+          "bottom_margin_mm": 24.99,
+          "left_margin_mm": 30.0,
+          "right_margin_mm": 30.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        },
+        {
+          "page_width_mm": 210.01,
+          "page_height_mm": 297.0,
+          "top_margin_mm": 27.99,
+          "bottom_margin_mm": 24.01,
+          "left_margin_mm": 24.99,
+          "right_margin_mm": 22.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        },
+        {
+          "page_width_mm": 210.01,
+          "page_height_mm": 297.0,
+          "top_margin_mm": 27.99,
+          "bottom_margin_mm": 24.01,
+          "left_margin_mm": 24.99,
+          "right_margin_mm": 22.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        },
+        {
+          "page_width_mm": 210.01,
+          "page_height_mm": 297.0,
+          "top_margin_mm": 27.99,
+          "bottom_margin_mm": 24.01,
+          "left_margin_mm": 24.99,
+          "right_margin_mm": 22.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        },
+        {
+          "page_width_mm": 210.01,
+          "page_height_mm": 297.0,
+          "top_margin_mm": 30.0,
+          "bottom_margin_mm": 24.99,
+          "left_margin_mm": 30.0,
+          "right_margin_mm": 30.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        },
+        {
+          "page_width_mm": 297.0,
+          "page_height_mm": 210.01,
+          "top_margin_mm": 30.0,
+          "bottom_margin_mm": 30.0,
+          "left_margin_mm": 24.99,
+          "right_margin_mm": 30.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        },
+        {
+          "page_width_mm": 210.01,
+          "page_height_mm": 297.0,
+          "top_margin_mm": 30.0,
+          "bottom_margin_mm": 24.99,
+          "left_margin_mm": 30.0,
+          "right_margin_mm": 30.0,
+          "header_distance_mm": 15.01,
+          "footer_distance_mm": 17.5
+        }
+      ],
+      "styles": [
+        {
+          "name": "Normal",
+          "font": "Calibri",
+          "size_pt": 14.0,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Heading 1",
+          "font": "黑体",
+          "size_pt": 15.0,
+          "bold": true,
+          "italic": null
+        },
+        {
+          "name": "Heading 2",
+          "font": "Arial",
+          "size_pt": 12.0,
+          "bold": true,
+          "italic": null
+        },
+        {
+          "name": "Heading 3",
+          "font": null,
+          "size_pt": 12.0,
+          "bold": true,
+          "italic": null
+        },
+        {
+          "name": "Body Text",
+          "font": "黑体",
+          "size_pt": null,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Body Text Indent",
+          "font": null,
+          "size_pt": 12.0,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "toc 3",
+          "font": null,
+          "size_pt": null,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Plain Text",
+          "font": "宋体",
+          "size_pt": null,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Date",
+          "font": null,
+          "size_pt": null,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Footer",
+          "font": null,
+          "size_pt": 9.0,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Header",
+          "font": null,
+          "size_pt": 9.0,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "toc 1",
+          "font": null,
+          "size_pt": null,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "toc 2",
+          "font": null,
+          "size_pt": null,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "HTML Preformatted",
+          "font": "宋体",
+          "size_pt": 12.0,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Normal (Web)",
+          "font": "宋体",
+          "size_pt": 12.0,
+          "bold": null,
+          "italic": null
+        },
+        {
+          "name": "Title",
+          "font": null,
+          "size_pt": 16.0,
+          "bold": true,
+          "italic": null
+        },
+        {
+          "name": "样式8",
+          "font": "黑体",
+          "size_pt": null,
+          "bold": false,
+          "italic": null
+        }
+      ]
+    }
+  }
+}

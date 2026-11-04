@@ -1,5 +1,5 @@
 ﻿DiscSorter.App
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 E:\woker\cshap-edge-defect\src\DiscSorter.App\App.xaml
 111845743324
 
-291936138301
-229159739577
+31-1259478113
+2291969902485
 Controls\DetectionViewer.xaml;Controls\SlotCard.xaml;Controls\SlotCell.xaml;MainWindow.xaml;Styles\Styles.xaml;Views\CameraView.xaml;Views\MonitorView.xaml;Views\PlcView.xaml;Views\SettingsView.xaml;Views\VisionView.xaml;Views\WarehouseView.xaml;
 
-False
+True
 

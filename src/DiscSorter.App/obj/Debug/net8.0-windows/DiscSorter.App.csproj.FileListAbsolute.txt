@@ -186,3 +186,4 @@ E:\woker\cshap-edge-defect\src\DiscSorter.App\obj\Debug\net8.0-windows\refint\Di
 E:\woker\cshap-edge-defect\src\DiscSorter.App\obj\Debug\net8.0-windows\DiscSorter.App.pdb
 E:\woker\cshap-edge-defect\src\DiscSorter.App\obj\Debug\net8.0-windows\DiscSorter.App.genruntimeconfig.cache
 E:\woker\cshap-edge-defect\src\DiscSorter.App\obj\Debug\net8.0-windows\ref\DiscSorter.App.dll
+E:\woker\cshap-edge-defect\src\DiscSorter.App\obj\Debug\net8.0-windows\DiscSorter.App.sourcelink.json
